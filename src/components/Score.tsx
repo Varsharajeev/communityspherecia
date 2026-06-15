@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
-function useCount(el: HTMLElement | null, value: number) {
+function useCount(elRef: React.RefObject<HTMLDivElement | null>, value: number) {
   useEffect(() => {
+    const el = elRef.current
     if (!el) return
-    let start = 0
     const duration = 1200
     let raf: number
     const startTime = performance.now()
@@ -16,16 +16,14 @@ function useCount(el: HTMLElement | null, value: number) {
     }
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
-  }, [el, value])
+  }, [elRef, value])
 }
 
 export default function Score() {
   const ref = useRef<HTMLDivElement | null>(null)
   const overallRef = useRef<HTMLDivElement | null>(null)
 
-  useEffect(() => {
-    useCount(overallRef.current, 94)
-  }, [])
+  useCount(overallRef, 94)
 
   return (
     <section id="score" className="mt-20">

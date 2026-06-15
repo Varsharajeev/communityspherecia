@@ -420,7 +420,105 @@
             </div>
         </section>
     </main>
+<!-- ========================================
+     HTML5 APIs DEMONSTRATION SECTION
+======================================== -->
+<section id="api-demo" class="py-16 sm:py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        <div class="text-center mb-12">
+            <h2 class="text-3xl sm:text-4xl font-bold text-slate-800 mb-4">
+                HTML5 API Demonstrations
+            </h2>
+            <p class="text-lg text-slate-600">
+                Interactive features powered by HTML5 APIs
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+
+            <!-- Geolocation API -->
+            <div class="bg-gray-50 p-6 rounded-xl shadow">
+                <h3 class="text-xl font-bold mb-4">📍 Geolocation API</h3>
+
+                <button onclick="getLocation()"
+                    class="bg-cyan-500 text-white px-4 py-2 rounded-lg">
+                    Get My Location
+                </button>
+
+                <div id="locationResult" class="mt-4 text-slate-700"></div>
+            </div>
+
+            <!-- Local Storage API -->
+            <div class="bg-gray-50 p-6 rounded-xl shadow">
+                <h3 class="text-xl font-bold mb-4">💾 Local Storage API</h3>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Enter your name"
+                    class="border p-2 rounded w-full mb-3">
+
+                <button
+                    onclick="saveUser()"
+                    class="bg-green-500 text-white px-4 py-2 rounded-lg">
+                    Save User
+                </button>
+
+                <div id="savedUser" class="mt-4"></div>
+            </div>
+
+            <!-- File API -->
+            <div class="bg-gray-50 p-6 rounded-xl shadow">
+                <h3 class="text-xl font-bold mb-4">📁 File API</h3>
+
+                <input
+                    type="file"
+                    id="issueImage"
+                    class="mb-4">
+
+                <img
+                    id="previewImage"
+                    class="rounded-lg max-h-48">
+            </div>
+
+            <!-- Notification API -->
+            <div class="bg-gray-50 p-6 rounded-xl shadow">
+                <h3 class="text-xl font-bold mb-4">🔔 Notification API</h3>
+
+                <button
+                    onclick="showNotification()"
+                    class="bg-purple-500 text-white px-4 py-2 rounded-lg">
+                    Show Notification
+                </button>
+            </div>
+
+            <!-- Drag & Drop API -->
+            <div class="bg-gray-50 p-6 rounded-xl shadow md:col-span-2">
+
+                <h3 class="text-xl font-bold mb-4">
+                    📦 Drag & Drop API
+                </h3>
+
+                <div
+                    id="resource"
+                    draggable="true"
+                    class="bg-cyan-500 text-white p-4 rounded-lg inline-block cursor-move">
+                    Community Book Donation
+                </div>
+
+                <div
+                    id="dropZone"
+                    class="mt-6 border-2 border-dashed border-slate-400 rounded-xl p-10 text-center">
+                    Drop Resource Here
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+</section>
     <!-- ========================================
          FOOTER SECTION
          Dark footer with copyright, quick links,
@@ -517,6 +615,225 @@
             </div>
         </div>
     </footer>
+<script>
 
+/* ==========================
+   GEOLOCATION API
+========================== */
+
+function getLocation() {
+
+    if (navigator.geolocation) {
+
+        navigator.geolocation.getCurrentPosition(
+
+            function(position) {
+
+                document.getElementById("locationResult").innerHTML =
+                    "<strong>Latitude:</strong> "
+                    + position.coords.latitude +
+                    "<br><strong>Longitude:</strong> "
+                    + position.coords.longitude;
+
+            },
+
+            function() {
+
+                document.getElementById("locationResult").innerHTML =
+                    "Unable to retrieve location.";
+
+            }
+
+        );
+
+    }
+
+}
+
+
+/* ==========================
+   LOCAL STORAGE API
+========================== */
+
+function saveUser() {
+
+    const username =
+        document.getElementById("username").value;
+
+    localStorage.setItem(
+        "communityUser",
+        username
+    );
+
+    document.getElementById("savedUser").innerHTML =
+        "Welcome, " + username;
+
+}
+
+
+window.addEventListener("load", () => {
+
+    const savedUser =
+        localStorage.getItem("communityUser");
+
+    if(savedUser){
+
+        document.getElementById("savedUser").innerHTML =
+            "Welcome back, " + savedUser;
+
+    }
+
+});
+
+
+/* ==========================
+   FILE API
+========================== */
+
+const issueImage =
+    document.getElementById("issueImage");
+
+if(issueImage){
+
+    issueImage.addEventListener(
+        "change",
+        function() {
+
+            const file =
+                this.files[0];
+
+            if(file){
+
+                const reader =
+                    new FileReader();
+
+                reader.onload =
+                    function(e){
+
+                        document.getElementById(
+                            "previewImage"
+                        ).src =
+                        e.target.result;
+
+                    };
+
+                reader.readAsDataURL(file);
+
+            }
+
+        }
+    );
+
+}
+
+
+/* ==========================
+   NOTIFICATION API
+========================== */
+
+function showNotification() {
+
+    if (!("Notification" in window)) {
+
+        alert(
+            "Notifications not supported."
+        );
+
+        return;
+
+    }
+
+    if (Notification.permission === "granted") {
+
+        new Notification(
+            "CommunitySphere Alert",
+            {
+                body:
+                "New community event available!"
+            }
+        );
+
+    }
+
+    else if (
+        Notification.permission !== "denied"
+    ) {
+
+        Notification.requestPermission()
+        .then(permission => {
+
+            if(permission === "granted") {
+
+                new Notification(
+                    "CommunitySphere Alert",
+                    {
+                        body:
+                        "Notifications Enabled!"
+                    }
+                );
+
+            }
+
+        });
+
+    }
+
+}
+
+
+/* ==========================
+   DRAG & DROP API
+========================== */
+
+const resource =
+    document.getElementById("resource");
+
+const dropZone =
+    document.getElementById("dropZone");
+
+if(resource && dropZone){
+
+    resource.addEventListener(
+        "dragstart",
+        function(e){
+
+            e.dataTransfer.setData(
+                "text/plain",
+                "Community Book Donation"
+            );
+
+        }
+    );
+
+    dropZone.addEventListener(
+        "dragover",
+        function(e){
+
+            e.preventDefault();
+
+        }
+    );
+
+    dropZone.addEventListener(
+        "drop",
+        function(e){
+
+            e.preventDefault();
+
+            const data =
+                e.dataTransfer.getData(
+                    "text/plain"
+                );
+
+            dropZone.innerHTML =
+                "✅ Resource Shared Successfully<br><br>" +
+                data;
+
+        }
+    );
+
+}
+
+</script>
 </body>
 </html>
