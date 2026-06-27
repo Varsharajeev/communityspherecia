@@ -31,22 +31,21 @@
             --moss-400:#7BAA6E;--moss-500:#5C8A50;--moss-600:#476E3C;--moss-700:#334F2A;--moss-900:#1A2714;
             --ink-50:#F7F6F4;--ink-100:#EDE9E4;--ink-300:#B5AFA8;--ink-500:#7A746C;--ink-700:#3D3832;--ink-800:#2A2520;--ink-900:#1A1713;
         }
- 
         * { box-sizing:border-box; }
         html { scroll-behavior:smooth; }
         body { background:var(--clay-50); color:var(--ink-700); font-family:'Inter',sans-serif; }
- 
+
         /* ── Typography ── */
         .eyebrow { font-family:'JetBrains Mono',monospace; font-size:0.68rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--moss-500); }
         .display-xl { font-family:'Fraunces',serif; font-size:clamp(2.8rem,6vw,5.5rem); font-weight:600; line-height:1.02; letter-spacing:-0.02em; color:var(--ink-900); }
         .display-lg { font-family:'Fraunces',serif; font-size:clamp(2rem,4vw,3.2rem); font-weight:600; line-height:1.1; letter-spacing:-0.015em; color:var(--ink-900); }
         .display-md { font-family:'Fraunces',serif; font-size:clamp(1.4rem,2.5vw,2rem); font-weight:600; line-height:1.2; }
- 
+
         /* ── LOGIN OVERLAY ── */
         #login-overlay { position:fixed;inset:0;z-index:9999;background:#0E0C0A;display:flex;align-items:center;justify-content:center;transition:opacity 0.7s ease,visibility 0.7s ease; }
         #login-overlay.hidden-overlay { opacity:0;visibility:hidden;pointer-events:none; }
         #login-canvas { position:absolute;inset:0;width:100%;height:100%; }
- 
+
         .login-card {
             position:relative;z-index:2;
             background:rgba(255,255,255,0.04);
@@ -57,7 +56,7 @@
             animation:card-rise 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
         }
         @keyframes card-rise { from{opacity:0;transform:translateY(40px) scale(0.96)} to{opacity:1;transform:translateY(0) scale(1)} }
- 
+
         .login-input {
             width:100%;background:rgba(255,255,255,0.05);
             border:1px solid rgba(255,255,255,0.1);border-radius:10px;
@@ -67,7 +66,7 @@
         }
         .login-input::placeholder { color:rgba(250,247,242,0.3); }
         .login-input:focus { border-color:var(--moss-400);background:rgba(92,138,80,0.06);box-shadow:0 0 0 3px rgba(92,138,80,0.14); }
- 
+
         .login-btn {
             width:100%;padding:14px;background:var(--moss-500);color:white;
             border:none;border-radius:10px;cursor:pointer;
@@ -76,7 +75,7 @@
         }
         .login-btn:hover { background:var(--moss-600);transform:translateY(-1px);box-shadow:0 8px 24px rgba(92,138,80,0.3); }
         .login-btn:active { transform:translateY(0); }
- 
+
         .login-tab { flex:1;padding:10px;text-align:center;cursor:pointer;font-size:0.85rem;font-weight:600;color:rgba(250,247,242,0.4);border-bottom:2px solid transparent;transition:all 0.2s;font-family:'Inter',sans-serif; }
         .login-tab.active { color:var(--clay-400);border-bottom-color:var(--clay-400); }
         .tab-panel { display:none; }
@@ -93,7 +92,7 @@
         .social-btn:hover { background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.2);transform:translateY(-1px); }
         .strength-bar { height:3px;background:rgba(255,255,255,0.07);border-radius:2px;margin-top:7px;overflow:hidden; }
         .strength-fill { height:100%;border-radius:2px;transition:width 0.3s,background 0.3s;width:0; }
- 
+
         /* ── TOAST ── */
         #toast-root { position:fixed;bottom:28px;right:24px;z-index:9998;display:flex;flex-direction:column;gap:10px;pointer-events:none; }
         .toast { background:var(--ink-900);border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:14px 18px;color:#FAF7F2;font-size:0.83rem;font-family:'Inter',sans-serif;max-width:300px;display:flex;align-items:center;gap:10px;box-shadow:0 12px 40px rgba(0,0,0,0.5);animation:toast-in 0.4s cubic-bezier(0.16,1,0.3,1);pointer-events:auto; }
@@ -104,9 +103,10 @@
         .t-success .toast-icon { background:rgba(92,138,80,0.18); }
         .t-info .toast-icon { background:rgba(184,145,94,0.18); }
         .t-error .toast-icon { background:rgba(220,38,38,0.15); }
- 
+
         /* ── NAV ── */
-        nav { background:rgba(250,247,242,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--clay-200);position:sticky;top:0;z-index:100; }
+        nav { background:rgba(250,247,242,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--clay-200);position:sticky;top:0;z-index:100;transition:box-shadow 0.25s,background 0.25s; }
+        nav.nav-scrolled { box-shadow:0 8px 28px rgba(26,23,19,0.08); background:rgba(250,247,242,0.97); }
         .nav-link { font-size:0.875rem;font-weight:500;color:var(--ink-700);padding:6px 14px;border-radius:100px;transition:all 0.18s; }
         .nav-link:hover,.nav-link.active { background:rgba(92,138,80,0.1);color:var(--moss-600); }
         .nav-avatar { width:34px;height:34px;border-radius:50%;background:var(--moss-500);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.82rem;cursor:pointer;transition:transform 0.15s; }
@@ -115,7 +115,7 @@
         #nav-dropdown.open { display:block;animation:fade-slide 0.2s ease; }
         .dditem { display:flex;align-items:center;gap:10px;padding:8px 12px;border-radius:8px;font-size:0.85rem;cursor:pointer;color:var(--ink-800);transition:background 0.15s;font-family:'Inter',sans-serif; }
         .dditem:hover { background:var(--clay-50); }
- 
+
         /* ── HERO ── */
         .hero { min-height:92vh;background:var(--ink-900);position:relative;display:flex;align-items:center;overflow:hidden; }
         #hero-canvas { position:absolute;inset:0;width:100%;height:100%;pointer-events:none; }
@@ -127,81 +127,80 @@
         @keyframes float-y { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
         .badge-num { font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:var(--clay-400);display:block;line-height:1; }
         .badge-lbl { font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:rgba(250,247,242,0.5);margin-top:4px;display:block; }
- 
+
         /* Ticker */
         .ticker-wrap { overflow:hidden;white-space:nowrap;background:rgba(0,0,0,0.3);border-top:1px solid rgba(255,255,255,0.06); }
         .ticker-track { display:inline-block;animation:ticker 30s linear infinite; }
         @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
- 
+
         /* Typewriter cursor */
         #typewriter::after { content:'|';animation:blink 0.9s step-end infinite;color:var(--clay-400); }
         @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
- 
+
         /* Pulse dot */
         .pdot { width:8px;height:8px;border-radius:50%;background:var(--moss-400);display:inline-block;position:relative;flex-shrink:0; }
         .pdot::after { content:'';position:absolute;inset:-4px;border-radius:50%;background:rgba(92,138,80,0.3);animation:pulse-ring 2s ease-out infinite; }
         @keyframes pulse-ring { 0%{transform:scale(0.8);opacity:1} 100%{transform:scale(2.2);opacity:0} }
- 
+
         /* ── REVEAL ── */
         .reveal { opacity:0;transform:translateY(28px);transition:opacity 0.6s ease,transform 0.6s ease; }
         .reveal.visible { opacity:1;transform:translateY(0); }
         .delay-1 { transition-delay:0.1s; }
         .delay-2 { transition-delay:0.2s; }
         .delay-3 { transition-delay:0.3s; }
- 
+
         /* ── CARDS ── */
         .card { background:white;border:1px solid var(--clay-100);border-radius:18px;transition:box-shadow 0.25s,transform 0.25s; }
         .card:hover { box-shadow:0 16px 48px rgba(0,0,0,0.08);transform:translateY(-3px); }
         .card-dark { background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px; }
- 
+
         /* ── BUTTONS ── */
         .btn-primary { display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:var(--moss-500);color:white;font-weight:600;font-size:0.9rem;border-radius:100px;border:none;cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif; }
         .btn-primary:hover { background:var(--moss-600);transform:translateY(-1px);box-shadow:0 8px 24px rgba(92,138,80,0.3); }
         .btn-ghost { display:inline-flex;align-items:center;gap:8px;padding:13px 28px;background:transparent;color:var(--ink-700);font-weight:600;font-size:0.9rem;border-radius:100px;border:1.5px solid var(--clay-200);cursor:pointer;transition:all 0.2s;font-family:'Inter',sans-serif; }
         .btn-ghost:hover { border-color:var(--moss-400);color:var(--moss-600);background:rgba(92,138,80,0.05); }
         .btn-sm { padding:8px 18px;font-size:0.8rem;border-radius:100px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s; }
- 
+
         /* ── FORM ELEMENTS ── */
         .field { width:100%;border:1.5px solid var(--clay-200);border-radius:10px;padding:12px 16px;font-family:'Inter',sans-serif;font-size:0.875rem;color:var(--ink-800);background:white;outline:none;transition:border-color 0.2s,box-shadow 0.2s; }
         .field:focus { border-color:var(--moss-400);box-shadow:0 0 0 3px rgba(92,138,80,0.1); }
         .field::placeholder { color:var(--ink-300); }
         textarea.field { resize:vertical;min-height:100px; }
         select.field { appearance:none;cursor:pointer; }
-        .field:invalid:not(:placeholder-shown) { border-color:#DC2626; }
- 
+
         /* ── STAT BARS ── */
         .stat-bar-bg { height:6px;background:var(--clay-100);border-radius:4px;overflow:hidden; }
         .stat-bar-fill { height:100%;border-radius:4px;transition:width 1.2s cubic-bezier(0.16,1,0.3,1);width:0; }
- 
+
         /* ── ISSUE TAGS ── */
         .itag { display:inline-flex;align-items:center;gap:5px;padding:6px 14px;border-radius:100px;font-size:0.78rem;font-weight:600;cursor:pointer;border:1.5px solid var(--clay-200);background:var(--clay-50);color:var(--ink-500);transition:all 0.2s; }
         .itag.active { background:rgba(92,138,80,0.1);border-color:var(--moss-500);color:var(--moss-600); }
         .itag:hover:not(.active) { border-color:var(--clay-400);color:var(--ink-800); }
- 
+
         /* ── PRIORITY ── */
         .pbtn { padding:7px 18px;border-radius:100px;font-size:0.78rem;font-weight:600;cursor:pointer;border:1.5px solid var(--clay-200);background:var(--clay-50);color:var(--ink-500);transition:all 0.2s;font-family:'Inter',sans-serif; }
         .pbtn.active.low { background:var(--moss-500);border-color:var(--moss-500);color:white; }
         .pbtn.active.med { background:var(--clay-500);border-color:var(--clay-500);color:white; }
         .pbtn.active.hi  { background:#DC2626;border-color:#DC2626;color:white; }
- 
+
         /* ── POLL ── */
         .poll-opt { cursor:pointer;padding:13px 16px;border-radius:12px;border:1.5px solid var(--clay-200);background:var(--clay-50);margin-bottom:10px;transition:all 0.2s;display:flex;align-items:center;gap:12px;position:relative;overflow:hidden; }
         .poll-opt:hover { border-color:var(--moss-400);background:rgba(92,138,80,0.04); }
         .poll-opt.voted { border-color:var(--moss-500);cursor:default; }
         .poll-bar-bg { height:3px;background:var(--clay-100);border-radius:2px;overflow:hidden;margin-top:5px; }
         .poll-bar-fill { height:100%;background:var(--moss-500);border-radius:2px;transition:width 0.8s cubic-bezier(0.16,1,0.3,1);width:0; }
- 
+
         /* ── FEED ── */
         .feed-row { display:flex;align-items:flex-start;gap:12px;padding:13px 0;border-bottom:1px solid var(--clay-100);animation:feed-in 0.5s cubic-bezier(0.16,1,0.3,1); }
         @keyframes feed-in { from{opacity:0;transform:translateX(-14px)} to{opacity:1;transform:translateX(0)} }
         .feed-av { width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;flex-shrink:0; }
- 
+
         /* ── VOLUNTEER CARD ── */
         .vol-card { background:white;border:1px solid var(--clay-100);border-radius:16px;padding:24px;transition:all 0.25s; }
         .vol-card:hover { box-shadow:0 16px 40px rgba(0,0,0,0.07);transform:translateY(-3px); }
- 
+
         /* ── MAP ── */
-        #community-map { width:100%;height:360px;border-radius:16px;background:var(--ink-100);position:relative;overflow:hidden; }
+        #community-map { width:100%;height:360px;border-radius:16px;background:var(--ink-100);position:relative;overflow:hidden;cursor:context-menu; }
         .map-region { position:absolute;inset:0;background:linear-gradient(135deg,#e8f0e5 0%,#d4e8cc 50%,#c8d9be 100%); }
         .map-grid { position:absolute;inset:0; }
         .mdot { position:absolute;border-radius:50%;cursor:pointer;transition:transform 0.2s; }
@@ -211,7 +210,8 @@
         .mdot.amber { background:#A07040; } .mdot.amber::after { background:#A07040; }
         .mdot.red { background:#DC2626; } .mdot.red::after { background:#DC2626; }
         .map-tooltip { position:absolute;background:var(--ink-900);color:#FAF7F2;border-radius:8px;padding:8px 12px;font-size:0.75rem;white-space:nowrap;pointer-events:none;z-index:10;display:none;font-family:'Inter',sans-serif; }
- 
+        .map-hint { position:absolute;bottom:10px;right:12px;font-size:0.65rem;font-family:'JetBrains Mono',monospace;color:rgba(51,79,42,0.55);background:rgba(255,255,255,0.65);padding:4px 9px;border-radius:100px;letter-spacing:0.04em;pointer-events:none; }
+
         /* ── AI ASSISTANT ── */
         .ai-bubble { max-width:80%;padding:13px 16px;border-radius:14px;font-size:0.85rem;line-height:1.55;margin-bottom:10px; }
         .ai-bubble.bot { background:white;border:1px solid var(--clay-100);color:var(--ink-800);border-radius:14px 14px 14px 4px;align-self:flex-start; }
@@ -221,12 +221,12 @@
         .ai-loading span:nth-child(2) { animation-delay:0.15s; }
         .ai-loading span:nth-child(3) { animation-delay:0.3s; }
         @keyframes dot-bounce { 0%,80%,100%{transform:translateY(0)} 40%{transform:translateY(-6px)} }
- 
+
         /* ── RESOURCE MARKETPLACE ── */
         .res-card { background:white;border:1px solid var(--clay-100);border-radius:14px;padding:18px;transition:all 0.2s; }
         .res-card:hover { box-shadow:0 8px 28px rgba(0,0,0,0.07);transform:translateY(-2px); }
         .res-badge { display:inline-block;padding:3px 10px;border-radius:100px;font-size:0.7rem;font-weight:600;font-family:'JetBrains Mono',monospace; }
- 
+
         /* ── DARK MODE ── */
         body.dark {
             background:var(--ink-900) !important;color:var(--clay-100);
@@ -235,6 +235,7 @@
         }
         body.dark .card, body.dark .vol-card, body.dark .res-card { background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08); }
         body.dark nav { background:rgba(26,23,19,0.9);border-color:rgba(255,255,255,0.07); }
+        body.dark nav.nav-scrolled { background:rgba(26,23,19,0.97); }
         body.dark #ai-reporter, body.dark #volunteer, body.dark #toolkit { background:var(--ink-900) !important; }
         body.dark #nav-dropdown { background:var(--ink-800); box-shadow:0 12px 40px rgba(0,0,0,0.55); }
         body.dark .field, body.dark select.field, body.dark textarea.field {
@@ -243,17 +244,15 @@
         body.dark .field::placeholder { color:rgba(237,233,228,0.32); }
         body.dark .ai-bubble.bot { background:rgba(255,255,255,0.04); }
         body.dark #community-map .map-region { filter:brightness(0.55) saturate(0.7); }
- 
+        body.dark .map-hint { background:rgba(0,0,0,0.4);color:rgba(250,247,242,0.55); }
+
         /* ── SECTION DIVIDER ── */
         .section-divider { height:1px;background:linear-gradient(to right,transparent,var(--clay-200),transparent); }
- 
+
         /* ── SCROLL ── */
         .scroll-line { width:1px;height:44px;background:linear-gradient(to bottom,rgba(184,145,94,0.7),transparent);animation:scroll-drop 2s ease-in-out infinite; }
         @keyframes scroll-drop { 0%{transform:scaleY(0);transform-origin:top;opacity:0} 45%{transform:scaleY(1);transform-origin:top;opacity:1} 100%{transform:scaleY(1);transform-origin:bottom;opacity:0} }
- 
-        /* ── STATS SECTION ── */
-        .stats-section { background:var(--moss-900,#1A2714); }
- 
+
         /* ── MOBILE NAV ── */
         .mobile-menu-btn { display:none;width:38px;height:38px;border-radius:10px;background:var(--clay-100);border:1.5px solid var(--clay-200);cursor:pointer;align-items:center;justify-content:center;flex-direction:column;gap:4px; }
         .mobile-menu-btn span { width:18px;height:2px;background:var(--ink-700);border-radius:1px;transition:all 0.2s; }
@@ -265,20 +264,106 @@
         #mobile-nav-panel a { padding:10px 12px;border-radius:8px;font-size:0.9rem;font-weight:500;color:var(--ink-700);text-decoration:none; }
         #mobile-nav-panel a:hover { background:rgba(92,138,80,0.1);color:var(--moss-600); }
         body.dark #mobile-nav-panel { background:var(--ink-900); }
- 
-        /* Responsive nav */
+
         @media(max-width:768px) {
             .nav-links { display:none; }
             .hero-badge { display:none; }
             .mobile-menu-btn { display:flex; }
         }
+
+        /* ── Scroll progress (top of viewport) ── */
+        #scroll-progress-bar {
+            position:fixed;top:0;left:0;height:3px;width:0%;
+            background:linear-gradient(90deg,var(--moss-500),var(--clay-400));
+            z-index:10000;transition:width 0.1s linear;
+        }
+
+        /* ── Back to top button (scroll) ── */
+        #back-to-top {
+            position:fixed;bottom:28px;left:24px;z-index:9997;
+            width:44px;height:44px;border-radius:50%;
+            background:var(--ink-900);color:#FAF7F2;border:1px solid rgba(255,255,255,0.12);
+            display:flex;align-items:center;justify-content:center;cursor:pointer;
+            box-shadow:0 8px 28px rgba(0,0,0,0.3);
+            opacity:0;transform:translateY(10px);pointer-events:none;
+            transition:opacity 0.25s,transform 0.25s,background 0.2s;
+        }
+        #back-to-top.show { opacity:1;transform:translateY(0);pointer-events:auto; }
+        #back-to-top:hover { background:var(--moss-600); }
+
+        /* ── Custom right-click context menu ── */
+        #custom-context-menu {
+            position:fixed;z-index:9995;
+            background:white;border:1px solid var(--clay-200);
+            border-radius:14px;padding:6px;min-width:210px;
+            box-shadow:0 16px 48px rgba(0,0,0,0.16);
+            display:none;
+            animation:fade-slide 0.18s ease;
+        }
+        body.dark #custom-context-menu { background:var(--ink-800);border-color:rgba(255,255,255,0.1); }
+        .cmenu-item {
+            display:flex;align-items:center;gap:10px;padding:9px 13px;
+            border-radius:8px;font-size:0.83rem;cursor:pointer;
+            color:var(--ink-800);font-family:'Inter',sans-serif;
+            transition:background 0.15s;
+        }
+        .cmenu-item:hover { background:rgba(92,138,80,0.08);color:var(--moss-600); }
+        .cmenu-label { padding:7px 13px 3px;font-size:0.65rem;font-family:'JetBrains Mono',monospace;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-300); }
+        .cmenu-sep { height:1px;background:var(--clay-100);margin:4px 0; }
+        body.dark .cmenu-item { color:var(--ink-700); }
+        body.dark .cmenu-sep { background:rgba(255,255,255,0.08); }
+
+        /* dblclick ripple (used on the map) */
+        .ripple-effect {
+            position:fixed;border-radius:50%;
+            background:rgba(92,138,80,0.3);pointer-events:none;
+            transform:scale(0);animation:ripple-grow 0.6s ease-out forwards;
+            z-index:9994;
+        }
+        @keyframes ripple-grow { to{transform:scale(1);opacity:0} }
+
+        /* keyboard-shortcut hint popover (keydown) */
+        #shortcuts-pop {
+            display:none;position:absolute;right:0;top:calc(100% + 8px);
+            background:white;border:1px solid var(--clay-100);border-radius:14px;
+            padding:14px 16px;min-width:230px;box-shadow:0 12px 40px rgba(0,0,0,0.12);z-index:200;
+        }
+        #shortcuts-pop.open { display:block;animation:fade-slide 0.2s ease; }
+        body.dark #shortcuts-pop { background:var(--ink-800);border-color:rgba(255,255,255,0.1); }
+        .skey-row { display:flex;align-items:center;justify-content:space-between;padding:5px 0;font-size:0.8rem;color:var(--ink-700); }
+        .skey-chip { background:var(--clay-100);border:1px solid var(--clay-200);border-radius:6px;padding:1px 8px;font-family:'JetBrains Mono',monospace;font-size:0.74rem;color:var(--ink-800); }
+        body.dark .skey-chip { background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.14);color:var(--clay-100); }
+
+        /* dashboard metric hover tooltip (mouseover/mouseout) */
+        .stat-row { position:relative; }
+        .stat-tip {
+            display:none;position:absolute;left:0;bottom:calc(100% + 8px);
+            background:var(--ink-900);color:#FAF7F2;border-radius:8px;padding:7px 11px;
+            font-size:0.72rem;line-height:1.4;max-width:220px;z-index:5;
+            box-shadow:0 8px 24px rgba(0,0,0,0.25);
+        }
+        .stat-row:hover .stat-tip { display:block; }
+
+        /* blur-validated field feedback */
+        .blur-feedback { font-size:0.72rem;margin-top:5px;min-height:16px;font-family:'JetBrains Mono',monospace; }
     </style>
 </head>
 <body>
- 
+
+<!-- Scroll progress bar -->
+<div id="scroll-progress-bar"></div>
+
+<!-- Back to top (scroll) -->
+<button id="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top" aria-label="Back to top">
+    <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7"/></svg>
+</button>
+
+<!-- Custom context menu (contextmenu event) -->
+<div id="custom-context-menu"></div>
+
 <!-- ======== TOAST ======== -->
 <div id="toast-root"></div>
- 
+
 <!-- ======== LOGIN OVERLAY ======== -->
 <div id="login-overlay">
     <canvas id="login-canvas"></canvas>
@@ -296,7 +381,7 @@
         </div>
         <div class="login-error" id="login-err"></div>
         <div class="login-success" id="login-ok"></div>
- 
+
         <form id="login-form" class="tab-panel active" onsubmit="event.preventDefault(); doLogin();" novalidate>
             <div class="form-group"><label class="form-label" for="l-email">Email</label><input type="email" id="l-email" class="login-input" placeholder="you@example.com" required></div>
             <div class="form-group"><label class="form-label" for="l-pass">Password</label><div style="position:relative"><input type="password" id="l-pass" class="login-input" placeholder="••••••••" style="padding-right:44px" required minlength="6"><button type="button" onclick="togglePwd('l-pass',this)" style="position:absolute;right:13px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;color:rgba(250,247,242,0.35)"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button></div></div>
@@ -309,25 +394,29 @@
             <div style="display:flex;gap:9px"><button type="button" class="social-btn" onclick="socialLogin('Google')"><svg width="15" height="15" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>Google</button><button type="button" class="social-btn" onclick="socialLogin('GitHub')"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>GitHub</button></div>
             <p style="text-align:center;font-size:0.75rem;color:rgba(250,247,242,0.28);margin-top:16px">Demo: any email + password "demo123"</p>
         </form>
- 
+
         <form id="register-form" class="tab-panel" onsubmit="event.preventDefault(); doRegister();" novalidate>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px" class="form-group">
                 <div><label class="form-label" for="r-fn">First name</label><input type="text" id="r-fn" class="login-input" placeholder="Jane" required></div>
                 <div><label class="form-label" for="r-ln">Last name</label><input type="text" id="r-ln" class="login-input" placeholder="Smith" required></div>
             </div>
             <div class="form-group"><label class="form-label" for="r-em">Email</label><input type="email" id="r-em" class="login-input" placeholder="you@example.com" required></div>
-            <div class="form-group"><label class="form-label" for="r-nb">Neighborhood / Sector</label><input type="text" id="r-nb" class="login-input" placeholder="e.g. Sector 4, Greenway"></div>
+            <div class="form-group">
+                <label class="form-label" for="r-nb">Neighborhood / Sector</label>
+                <input type="text" id="r-nb" class="login-input" placeholder="e.g. Sector 4, Greenway">
+                <div class="blur-feedback" id="r-nb-feedback" style="color:rgba(250,247,242,0.3)"></div>
+            </div>
             <div class="form-group"><label class="form-label" for="r-pw">Password</label><div style="position:relative"><input type="password" id="r-pw" class="login-input" placeholder="Min. 8 characters" oninput="checkStrength(this.value)" style="padding-right:44px" required minlength="8"><button type="button" onclick="togglePwd('r-pw',this)" style="position:absolute;right:13px;top:14px;background:none;border:none;cursor:pointer;color:rgba(250,247,242,0.35)"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg></button></div><div class="strength-bar"><div class="strength-fill" id="s-fill"></div></div><div style="font-size:0.68rem;color:rgba(250,247,242,0.38);margin-top:4px" id="s-label"></div></div>
             <label style="display:flex;align-items:flex-start;gap:9px;color:rgba(250,247,242,0.45);font-size:0.78rem;margin-bottom:18px;cursor:pointer"><input type="checkbox" id="r-agree" style="accent-color:var(--moss-500);margin-top:2px"> I agree to the <span style="color:var(--clay-400);text-decoration:underline">Terms</span> and <span style="color:var(--clay-400);text-decoration:underline">Privacy Policy</span></label>
             <button type="submit" class="login-btn">Create My Account</button>
         </form>
- 
+
         <button onclick="guestAccess()" style="width:100%;margin-top:12px;padding:11px;background:none;border:1px solid rgba(255,255,255,0.08);border-radius:9px;color:rgba(250,247,242,0.38);font-size:0.8rem;cursor:pointer;font-family:'Inter',sans-serif;transition:all 0.2s" onmouseover="this.style.borderColor='rgba(255,255,255,0.2)';this.style.color='rgba(250,247,242,0.65)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.color='rgba(250,247,242,0.38)'">Continue as guest →</button>
     </div>
 </div>
- 
+
 <!-- ======== NAVIGATION ======== -->
-<nav>
+<nav id="main-nav">
     <div style="max-width:1280px;margin:0 auto;padding:0 24px">
         <div style="display:flex;align-items:center;justify-content:space-between;height:64px">
             <a href="#home" style="display:flex;align-items:center;gap:10px;text-decoration:none">
@@ -344,6 +433,19 @@
                 <a href="#toolkit" class="nav-link">Toolkit</a>
             </div>
             <div style="display:flex;align-items:center;gap:10px">
+                <div style="position:relative">
+                    <button onclick="toggleShortcuts()" id="shortcuts-btn" title="Keyboard shortcuts" style="width:34px;height:34px;border-radius:50%;background:var(--clay-100);border:1.5px solid var(--clay-200);cursor:pointer;font-size:0.78rem;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;color:var(--ink-500)">⌨</button>
+                    <div id="shortcuts-pop">
+                        <div class="cmenu-label" style="padding-left:0">Keyboard shortcuts</div>
+                        <div class="skey-row"><span>Report an issue</span><span class="skey-chip">R</span></div>
+                        <div class="skey-row"><span>Community map</span><span class="skey-chip">M</span></div>
+                        <div class="skey-row"><span>Dashboard</span><span class="skey-chip">D</span></div>
+                        <div class="skey-row"><span>Volunteer hub</span><span class="skey-chip">V</span></div>
+                        <div class="skey-row"><span>Marketplace</span><span class="skey-chip">P</span></div>
+                        <div class="skey-row"><span>Toolkit</span><span class="skey-chip">T</span></div>
+                        <div class="skey-row"><span>Close menus</span><span class="skey-chip">Esc</span></div>
+                    </div>
+                </div>
                 <button onclick="toggleDark()" id="dark-btn" title="Toggle theme" style="width:34px;height:34px;border-radius:50%;background:var(--clay-100);border:1.5px solid var(--clay-200);cursor:pointer;font-size:0.9rem;display:flex;align-items:center;justify-content:center;transition:all 0.2s">🌙</button>
                 <div id="nav-user" style="display:none;position:relative">
                     <div class="nav-avatar" id="nav-av" onclick="toggleDD()"></div>
@@ -371,14 +473,12 @@
         </div>
     </div>
 </nav>
- 
+
 <!-- ======== HERO ======== -->
 <header id="home" class="hero">
-    <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1920&q=80" alt="" class="hero-bg-img" id="hero-photo">
+    <img src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=1920&q=80" alt="" class="hero-bg-img">
     <div class="hero-overlay"></div>
     <canvas id="hero-canvas"></canvas>
- 
-    <!-- Floating badges -->
     <div class="hero-badge" style="top:20%;right:10%">
         <span class="badge-num">12K+</span><span class="badge-lbl">Active Members</span>
     </div>
@@ -388,7 +488,6 @@
     <div class="hero-badge" style="top:35%;right:4%">
         <span class="badge-num">94/100</span><span class="badge-lbl">Health Score</span>
     </div>
- 
     <div style="position:relative;z-index:10;max-width:1280px;margin:0 auto;padding:0 24px;width:100%;padding-top:80px;padding-bottom:120px">
         <p class="eyebrow" style="color:var(--clay-400);margin-bottom:20px;display:flex;align-items:center;gap:10px">
             <span style="display:inline-block;width:28px;height:1px;background:var(--clay-600)"></span>
@@ -402,10 +501,9 @@
         </p>
         <div style="display:flex;flex-wrap:wrap;gap:12px">
             <a href="#dashboard" class="btn-primary" style="text-decoration:none">Explore Platform <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg></a>
-            <a href="#ai-reporter" class="btn-ghost" style="text-decoration:none;color:#FAF7F2;border-color:rgba(255,255,255,0.25)">Report an Issue</a>
+            <a href="#map" class="btn-ghost" style="text-decoration:none;color:#FAF7F2;border-color:rgba(255,255,255,0.25)">View Live Map</a>
         </div>
     </div>
- 
     <div style="position:absolute;bottom:0;left:0;right:0;z-index:10;background:rgba(20,17,13,0.65);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,0.06)">
         <div class="ticker-wrap" style="padding:10px 0">
             <div class="ticker-track" style="font-family:'JetBrains Mono',monospace;font-size:0.68rem;letter-spacing:0.15em;text-transform:uppercase;color:rgba(184,145,94,0.65)">
@@ -414,20 +512,18 @@
         </div>
     </div>
 </header>
- 
+
 <main id="main-content">
- 
+
 <!-- ======== LIVE DASHBOARD ======== -->
 <section id="dashboard" style="padding:80px 0;background:var(--clay-50)">
     <div style="max-width:1280px;margin:0 auto;padding:0 24px">
         <div class="reveal" style="margin-bottom:48px">
             <p class="eyebrow" style="margin-bottom:10px">Real-time pulse</p>
             <h2 class="display-lg" style="margin-bottom:10px">Live Community Dashboard</h2>
-            <p style="color:var(--ink-500);font-size:1rem;max-width:500px">Watch your neighborhood's metrics update live — from safety to sustainability.</p>
+            <p style="color:var(--ink-500);font-size:1rem;max-width:500px">Watch your neighborhood's metrics update live — from safety to sustainability. Hover any metric for details.</p>
         </div>
- 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
-            <!-- Health Stats -->
             <div class="card reveal" style="padding:26px">
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px">
                     <h3 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--ink-900)">Neighborhood Health</h3>
@@ -436,8 +532,6 @@
                 <div id="health-stats"></div>
                 <button onclick="refreshStats()" class="btn-sm" style="margin-top:16px;width:100%;background:var(--clay-50);border:1.5px solid var(--clay-200);color:var(--moss-600)">↻ Refresh Stats</button>
             </div>
- 
-            <!-- Activity Feed -->
             <div class="card reveal delay-1" style="padding:26px">
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px">
                     <h3 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--ink-900)">Activity Feed</h3>
@@ -446,8 +540,6 @@
                 <div id="activity-feed" style="max-height:260px;overflow-y:auto"></div>
                 <button onclick="addFeedItem()" class="btn-sm" style="margin-top:12px;width:100%;background:var(--clay-50);border:1.5px solid var(--clay-200);color:var(--clay-500)">+ Simulate Activity</button>
             </div>
- 
-            <!-- Poll -->
             <div class="card reveal delay-2" style="padding:26px">
                 <h3 style="font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--ink-900);margin-bottom:4px">Community Poll</h3>
                 <p style="font-size:0.82rem;color:var(--ink-500);margin-bottom:18px">What should we prioritize this month?</p>
@@ -461,76 +553,63 @@
         </div>
     </div>
 </section>
- 
+
 <div class="section-divider"></div>
- 
-<!-- ======== AI-POWERED ISSUE REPORTER (NEW FEATURE) ======== -->
+
+<!-- ======== AI ISSUE REPORTER ======== -->
 <section id="ai-reporter" style="padding:80px 0;background:white">
     <div style="max-width:1280px;margin:0 auto;padding:0 24px">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
             <div class="reveal">
-                <p class="eyebrow" style="margin-bottom:10px">Smart, runs locally — no external AI calls</p>
+                <p class="eyebrow" style="margin-bottom:10px">Smart, runs locally</p>
                 <h2 class="display-lg" style="margin-bottom:14px">Smart Issue Reporter</h2>
-                <p style="color:var(--ink-500);font-size:1rem;line-height:1.7;margin-bottom:28px">Describe any neighborhood issue in plain language. Our built-in classifier will automatically suggest a category and priority level, and draft a formal report — saving you time and ensuring nothing gets missed.</p>
- 
+                <p style="color:var(--ink-500);font-size:1rem;line-height:1.7;margin-bottom:28px">Describe any neighborhood issue in plain language. Our built-in classifier will automatically suggest a category and priority level.</p>
                 <form id="issue-form" onsubmit="event.preventDefault(); submitIssue();" novalidate>
-                <!-- Category tags -->
-                <div style="margin-bottom:20px">
-                    <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-300);margin-bottom:10px">Category</label>
-                    <div style="display:flex;flex-wrap:wrap;gap:8px" id="issue-tags">
-                        <span class="itag active" onclick="selTag(this)">🚧 Infrastructure</span>
-                        <span class="itag" onclick="selTag(this)">💡 Lighting</span>
-                        <span class="itag" onclick="selTag(this)">🌿 Environment</span>
-                        <span class="itag" onclick="selTag(this)">🏘️ Noise</span>
-                        <span class="itag" onclick="selTag(this)">🐕 Animals</span>
-                        <span class="itag" onclick="selTag(this)">🚰 Water / Drainage</span>
+                    <div style="margin-bottom:20px">
+                        <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-300);margin-bottom:10px">Category</label>
+                        <div style="display:flex;flex-wrap:wrap;gap:8px" id="issue-tags">
+                            <span class="itag active" onclick="selTag(this)">🚧 Infrastructure</span>
+                            <span class="itag" onclick="selTag(this)">💡 Lighting</span>
+                            <span class="itag" onclick="selTag(this)">🌿 Environment</span>
+                            <span class="itag" onclick="selTag(this)">🏘️ Noise</span>
+                            <span class="itag" onclick="selTag(this)">🐕 Animals</span>
+                            <span class="itag" onclick="selTag(this)">🚰 Water / Drainage</span>
+                        </div>
                     </div>
-                </div>
- 
-                <!-- Priority -->
-                <div style="margin-bottom:20px">
-                    <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-300);margin-bottom:10px">Priority</label>
-                    <div style="display:flex;gap:8px">
-                        <button type="button" class="pbtn active low" onclick="selPri(this)">Low</button>
-                        <button type="button" class="pbtn med" onclick="selPri(this)">Medium</button>
-                        <button type="button" class="pbtn hi" onclick="selPri(this)">High</button>
+                    <div style="margin-bottom:20px">
+                        <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-300);margin-bottom:10px">Priority</label>
+                        <div style="display:flex;gap:8px">
+                            <button type="button" class="pbtn active low" onclick="selPri(this)">Low</button>
+                            <button type="button" class="pbtn med" onclick="selPri(this)">Medium</button>
+                            <button type="button" class="pbtn hi" onclick="selPri(this)">High</button>
+                        </div>
                     </div>
-                </div>
- 
-                <!-- Location -->
-                <div style="margin-bottom:20px">
-                    <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-300);margin-bottom:10px">Location</label>
-                    <div style="display:flex;gap:8px">
-                        <input type="text" id="issue-loc" class="field" placeholder="e.g. Oak Ave & 3rd St" style="flex:1">
-                        <button type="button" onclick="pinLocation()" class="btn-sm" style="background:var(--clay-50);border:1.5px solid var(--clay-200);color:var(--moss-600);white-space:nowrap">📍 Use GPS</button>
+                    <div style="margin-bottom:20px">
+                        <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-300);margin-bottom:10px">Location</label>
+                        <div style="display:flex;gap:8px">
+                            <input type="text" id="issue-loc" class="field" placeholder="e.g. Oak Ave & 3rd St" style="flex:1">
+                            <button type="button" onclick="pinLocation()" class="btn-sm" style="background:var(--clay-50);border:1.5px solid var(--clay-200);color:var(--moss-600);white-space:nowrap">📍 Use GPS</button>
+                        </div>
                     </div>
-                </div>
- 
-                <!-- Description -->
-                <div style="margin-bottom:20px">
-                    <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-300);margin-bottom:10px">Description</label>
-                    <textarea id="issue-desc" class="field" placeholder="Describe the issue in detail…" rows="3" required minlength="10" maxlength="300"></textarea>
-                    <div style="display:flex;justify-content:space-between;margin-top:5px">
-                        <span style="font-size:0.72rem;color:var(--ink-300)" id="char-count">0 / 300</span>
+                    <div style="margin-bottom:20px">
+                        <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-300);margin-bottom:10px">Description</label>
+                        <textarea id="issue-desc" class="field" placeholder="Describe the issue in detail…" rows="3" required minlength="10" maxlength="300"></textarea>
+                        <div style="display:flex;justify-content:space-between;margin-top:5px">
+                            <span style="font-size:0.72rem;color:var(--ink-300)" id="char-count">0 / 300</span>
+                        </div>
                     </div>
-                </div>
- 
-                <!-- Photo -->
-                <div style="margin-bottom:24px">
-                    <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-300);margin-bottom:10px">Photo (optional)</label>
-                    <input type="file" id="issue-img" accept="image/*" style="font-size:0.82rem;color:var(--ink-500);width:100%" onchange="previewIssueImg(this)">
-                    <img id="issue-img-preview" style="margin-top:10px;max-height:120px;border-radius:10px;display:none">
-                </div>
- 
-                <div style="display:flex;gap:10px;flex-wrap:wrap">
-                    <button type="submit" class="btn-primary">Submit Report</button>
-                    <button type="button" onclick="askAI()" class="btn-ghost" id="ai-btn">✨ Auto-Classify & Draft</button>
-                </div>
-                <div id="submitted-issues" style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px"></div>
+                    <div style="margin-bottom:24px">
+                        <label style="display:block;font-family:'JetBrains Mono',monospace;font-size:0.62rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-300);margin-bottom:10px">Photo (optional)</label>
+                        <input type="file" id="issue-img" accept="image/*" style="font-size:0.82rem;color:var(--ink-500);width:100%" onchange="previewIssueImg(this)">
+                        <img id="issue-img-preview" style="margin-top:10px;max-height:120px;border-radius:10px;display:none">
+                    </div>
+                    <div style="display:flex;gap:10px;flex-wrap:wrap">
+                        <button type="submit" class="btn-primary">Submit Report</button>
+                        <button type="button" onclick="askAI()" class="btn-ghost" id="ai-btn">✨ Auto-Classify & Draft</button>
+                    </div>
+                    <div id="submitted-issues" style="margin-top:14px;display:flex;flex-wrap:wrap;gap:8px"></div>
                 </form>
             </div>
- 
-            <!-- Smart Issue Assistant (rule-based, fully local) -->
             <div class="reveal delay-1">
                 <div style="background:var(--clay-50);border:1.5px solid var(--clay-200);border-radius:18px;overflow:hidden">
                     <div style="padding:18px 22px;border-bottom:1px solid var(--clay-100);display:flex;align-items:center;gap:10px">
@@ -542,15 +621,14 @@
                         <span style="margin-left:auto;display:flex;align-items:center;gap:5px;font-size:0.7rem;font-family:'JetBrains Mono',monospace;color:var(--moss-500)"><span class="pdot" style="width:6px;height:6px"></span>Online</span>
                     </div>
                     <div id="ai-chat" style="padding:16px 18px;min-height:320px;max-height:420px;overflow-y:auto;display:flex;flex-direction:column;gap:4px">
-                        <div class="ai-bubble bot" style="max-width:85%">👋 Hello! I'm your Smart Issue Assistant. Tell me about a problem in your neighborhood — I'll suggest a category and priority, and draft a clear report you can submit.</div>
-                        <div class="ai-bubble bot" style="max-width:85%">You can also type something like <em>"there's a broken streetlight near the school"</em> and I'll handle the rest.</div>
+                        <div class="ai-bubble bot" style="max-width:85%">👋 Hello! I'm your Smart Issue Assistant. Tell me about a problem in your neighborhood.</div>
+                        <div class="ai-bubble bot" style="max-width:85%">Try: <em>"there's a broken streetlight near the school"</em></div>
                     </div>
                     <form style="padding:14px 16px;border-top:1px solid var(--clay-100);display:flex;gap:8px" onsubmit="event.preventDefault(); sendAI();">
                         <input type="text" id="ai-input" class="field" placeholder="Describe your issue…" style="flex:1;border-radius:100px;padding:10px 16px">
                         <button type="submit" class="btn-primary" style="padding:10px 18px;border-radius:100px">Send</button>
                     </form>
                 </div>
-                <!-- Quick prompts -->
                 <div style="margin-top:14px">
                     <p style="font-size:0.72rem;font-family:'JetBrains Mono',monospace;color:var(--ink-300);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:8px">Quick prompts</p>
                     <div style="display:flex;flex-wrap:wrap;gap:6px">
@@ -565,40 +643,36 @@
         </div>
     </div>
 </section>
- 
+
 <div class="section-divider"></div>
- 
-<!-- ======== COMMUNITY MAP (NEW FEATURE) ======== -->
+
+<!-- ======== COMMUNITY MAP ======== -->
 <section id="map" style="padding:80px 0;background:var(--clay-50)">
     <div style="max-width:1280px;margin:0 auto;padding:0 24px">
         <div class="reveal" style="margin-bottom:36px">
             <p class="eyebrow" style="margin-bottom:10px">Neighborhood Intelligence</p>
             <h2 class="display-lg" style="margin-bottom:10px">Live Issue Map</h2>
-            <p style="color:var(--ink-500);font-size:1rem;max-width:520px">See reported issues across your neighborhood in real time. Green = resolved, amber = in progress, red = urgent.</p>
+            <p style="color:var(--ink-500);font-size:1rem;max-width:520px">See reported issues across your neighborhood in real time. Double-click anywhere on the map for a quick report, or right-click for more options.</p>
         </div>
         <div style="display:grid;grid-template-columns:2fr 1fr;gap:24px;align-items:start">
             <div class="reveal">
-                <div id="community-map">
+                <div id="community-map" ondblclick="onMapDblClick(event)">
                     <div class="map-region"></div>
-                    <!-- SVG grid overlay -->
                     <svg class="map-grid" viewBox="0 0 600 360" xmlns="http://www.w3.org/2000/svg" style="position:absolute;inset:0;width:100%;height:100%">
                         <defs><pattern id="g" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(92,138,80,0.15)" stroke-width="1"/></pattern></defs>
                         <rect width="600" height="360" fill="url(#g)"/>
-                        <!-- Roads -->
                         <line x1="0" y1="180" x2="600" y2="180" stroke="rgba(255,255,255,0.7)" stroke-width="10"/>
                         <line x1="300" y1="0" x2="300" y2="360" stroke="rgba(255,255,255,0.7)" stroke-width="10"/>
                         <line x1="0" y1="90" x2="600" y2="90" stroke="rgba(255,255,255,0.4)" stroke-width="5"/>
                         <line x1="0" y1="270" x2="600" y2="270" stroke="rgba(255,255,255,0.4)" stroke-width="5"/>
                         <line x1="150" y1="0" x2="150" y2="360" stroke="rgba(255,255,255,0.4)" stroke-width="5"/>
                         <line x1="450" y1="0" x2="450" y2="360" stroke="rgba(255,255,255,0.4)" stroke-width="5"/>
-                        <!-- Labels -->
                         <text x="75" y="175" fill="rgba(51,79,42,0.5)" font-size="10" text-anchor="middle" font-family="'JetBrains Mono',monospace">Sector 1</text>
                         <text x="225" y="175" fill="rgba(51,79,42,0.5)" font-size="10" text-anchor="middle" font-family="'JetBrains Mono',monospace">Sector 2</text>
                         <text x="375" y="175" fill="rgba(51,79,42,0.5)" font-size="10" text-anchor="middle" font-family="'JetBrains Mono',monospace">Sector 3</text>
                         <text x="525" y="175" fill="rgba(51,79,42,0.5)" font-size="10" text-anchor="middle" font-family="'JetBrains Mono',monospace">Sector 4</text>
                         <text x="300" y="85" fill="rgba(51,79,42,0.5)" font-size="9" text-anchor="middle" font-family="'JetBrains Mono',monospace">OAK AVE</text>
                         <text x="300" y="193" fill="rgba(51,79,42,0.5)" font-size="9" text-anchor="middle" font-family="'JetBrains Mono',monospace">MAIN STREET</text>
-                        <!-- Buildings -->
                         <rect x="30" y="30" width="60" height="40" fill="rgba(92,138,80,0.12)" rx="3"/>
                         <rect x="110" y="30" width="40" height="40" fill="rgba(92,138,80,0.1)" rx="3"/>
                         <rect x="350" y="30" width="70" height="50" fill="rgba(92,138,80,0.12)" rx="3"/>
@@ -606,22 +680,19 @@
                         <rect x="30" y="200" width="80" height="50" fill="rgba(92,138,80,0.1)" rx="3"/>
                         <rect x="360" y="200" width="60" height="40" fill="rgba(92,138,80,0.12)" rx="3"/>
                         <rect x="470" y="200" width="80" height="55" fill="rgba(92,138,80,0.1)" rx="3"/>
-                        <!-- Park -->
                         <rect x="30" y="110" width="100" height="55" fill="rgba(92,138,80,0.18)" rx="6"/>
                         <text x="80" y="141" fill="rgba(51,79,42,0.6)" font-size="9" text-anchor="middle" font-family="'JetBrains Mono',monospace">PARK</text>
                     </svg>
-                    <!-- Issue dots injected by JS -->
                     <div id="map-dots"></div>
                     <div id="map-tooltip" class="map-tooltip"></div>
+                    <div class="map-hint">double-click or right-click the map</div>
                 </div>
-                <!-- Legend -->
                 <div style="display:flex;gap:20px;margin-top:14px;flex-wrap:wrap">
                     <span style="display:flex;align-items:center;gap:7px;font-size:0.78rem;color:var(--ink-500)"><span style="width:10px;height:10px;border-radius:50%;background:var(--moss-500)"></span>Resolved</span>
                     <span style="display:flex;align-items:center;gap:7px;font-size:0.78rem;color:var(--ink-500)"><span style="width:10px;height:10px;border-radius:50%;background:var(--clay-500)"></span>In Progress</span>
                     <span style="display:flex;align-items:center;gap:7px;font-size:0.78rem;color:var(--ink-500)"><span style="width:10px;height:10px;border-radius:50%;background:#DC2626"></span>Urgent</span>
                 </div>
             </div>
-            <!-- Issue list -->
             <div class="reveal delay-1">
                 <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
                     <h3 style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--ink-900)">Recent Issues</h3>
@@ -632,16 +703,15 @@
         </div>
     </div>
 </section>
- 
+
 <div class="section-divider"></div>
- 
+
 <!-- ======== STATS ======== -->
 <section style="padding:80px 0;background:var(--moss-900,#1A2714)">
     <div style="max-width:1280px;margin:0 auto;padding:0 24px">
         <div class="reveal" style="text-align:center;margin-bottom:52px">
             <p class="eyebrow" style="color:var(--clay-400);margin-bottom:10px">By the numbers</p>
             <h2 class="display-lg" style="color:#FAF7F2;margin-bottom:10px">Join Our Growing Community</h2>
-            <p style="color:rgba(250,247,242,0.55);font-size:1rem">Thousands of neighbors making a difference every day.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid rgba(255,255,255,0.08);border-radius:18px;overflow:hidden">
             <div onclick="animateNum(this,12,'K+')" style="padding:36px 24px;text-align:center;cursor:pointer;border-right:1px solid rgba(255,255,255,0.08);transition:background 0.2s" onmouseover="this.style.background='rgba(255,255,255,0.03)'" onmouseout="this.style.background='transparent'" class="reveal">
@@ -661,12 +731,11 @@
                 <div style="color:rgba(250,247,242,0.55);font-size:0.875rem">Health Score</div>
             </div>
         </div>
-        <p style="text-align:center;margin-top:14px;font-size:0.7rem;font-family:'JetBrains Mono',monospace;color:rgba(250,247,242,0.2);letter-spacing:0.1em">CLICK ANY STAT TO ANIMATE</p>
     </div>
 </section>
- 
+
 <div class="section-divider"></div>
- 
+
 <!-- ======== VOLUNTEER HUB ======== -->
 <section id="volunteer" style="padding:80px 0;background:white">
     <div style="max-width:1280px;margin:0 auto;padding:0 24px">
@@ -678,13 +747,13 @@
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px" id="volunteer-grid"></div>
     </div>
 </section>
- 
+
 <div class="section-divider"></div>
- 
-<!-- ======== RESOURCE MARKETPLACE (NEW/EXPANDED) ======== -->
+
+<!-- ======== RESOURCE MARKETPLACE ======== -->
 <section id="marketplace" style="padding:80px 0;background:var(--clay-50)">
     <div style="max-width:1280px;margin:0 auto;padding:0 24px">
-        <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;flex-wrap:gap">
+        <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;flex-wrap:wrap;gap:16px">
             <div class="reveal">
                 <p class="eyebrow" style="margin-bottom:10px">Share & Borrow</p>
                 <h2 class="display-lg" style="margin-bottom:10px">Resource Marketplace</h2>
@@ -704,8 +773,6 @@
             </div>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px" id="market-grid"></div>
- 
-        <!-- Add Resource Modal -->
         <div id="add-resource-modal" style="display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,0.5);backdrop-filter:blur(4px);align-items:center;justify-content:center">
             <div style="background:white;border-radius:18px;padding:36px;width:100%;max-width:480px;animation:card-rise 0.4s ease">
                 <h3 style="font-family:'Fraunces',serif;font-size:1.3rem;font-weight:600;color:var(--ink-900);margin-bottom:20px">List a Resource</h3>
@@ -723,9 +790,9 @@
         </div>
     </div>
 </section>
- 
+
 <div class="section-divider"></div>
- 
+
 <!-- ======== TOOLKIT ======== -->
 <section id="toolkit" style="padding:80px 0;background:white">
     <div style="max-width:1280px;margin:0 auto;padding:0 24px">
@@ -735,7 +802,6 @@
             <p style="color:var(--ink-500);font-size:1rem;max-width:480px;margin:0 auto">Interactive tools powered by modern browser APIs.</p>
         </div>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px">
-            <!-- Geolocation -->
             <div class="card reveal" style="padding:28px">
                 <div style="width:44px;height:44px;border-radius:12px;background:rgba(92,138,80,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
                     <svg width="20" height="20" fill="none" stroke="var(--moss-600)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
@@ -745,33 +811,27 @@
                 <button onclick="getLocation()" class="btn-sm" style="background:var(--moss-500);color:white;border:none">Use My Location</button>
                 <div id="locationResult" style="margin-top:12px;font-size:0.8rem;color:var(--ink-500);font-family:'JetBrains Mono',monospace"></div>
             </div>
- 
-            <!-- File Upload -->
             <div class="card reveal delay-1" style="padding:28px">
                 <div style="width:44px;height:44px;border-radius:12px;background:rgba(160,112,64,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
                     <svg width="20" height="20" fill="none" stroke="var(--clay-600)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 7.5L12 3m0 0L7.5 7.5M12 3v13.5"/></svg>
                 </div>
                 <h3 style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--ink-900);margin-bottom:6px">Attach Evidence Photo</h3>
-                <p style="font-size:0.82rem;color:var(--ink-500);margin-bottom:16px;line-height:1.6">Upload a photo directly to your report. Preview before submitting.</p>
+                <p style="font-size:0.82rem;color:var(--ink-500);margin-bottom:16px;line-height:1.6">Upload a photo directly to your report.</p>
                 <input type="file" id="issueImage" accept="image/*" style="font-size:0.78rem;color:var(--ink-400)" onchange="previewPhoto(this)">
                 <img id="previewImage" style="margin-top:10px;max-height:100px;border-radius:8px;display:none">
             </div>
- 
-            <!-- Local Storage -->
             <div class="card reveal delay-2" style="padding:28px">
                 <div style="width:44px;height:44px;border-radius:12px;background:rgba(92,138,80,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
                     <svg width="20" height="20" fill="none" stroke="var(--moss-600)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
                 </div>
                 <h3 style="font-family:'Fraunces',serif;font-size:1rem;font-weight:600;color:var(--ink-900);margin-bottom:6px">Save Your Profile</h3>
-                <p style="font-size:0.82rem;color:var(--ink-500);margin-bottom:16px;line-height:1.6">Your name is remembered locally for personalized greetings.</p>
+                <p style="font-size:0.82rem;color:var(--ink-500);margin-bottom:16px;line-height:1.6">Your name is remembered locally for personalized greetings. It auto-saves the moment you click away from the field.</p>
                 <div style="display:flex;gap:8px">
                     <input type="text" id="username" class="field" placeholder="Your name" style="flex:1">
                     <button onclick="saveUser()" class="btn-sm" style="background:var(--clay-500);color:white;border:none">Save</button>
                 </div>
                 <div id="savedUser" style="margin-top:10px;font-size:0.82rem;color:var(--ink-500)"></div>
             </div>
- 
-            <!-- Notifications -->
             <div class="card reveal delay-3" style="padding:28px">
                 <div style="width:44px;height:44px;border-radius:12px;background:rgba(160,112,64,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
                     <svg width="20" height="20" fill="none" stroke="var(--clay-600)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0"/></svg>
@@ -780,8 +840,6 @@
                 <p style="font-size:0.82rem;color:var(--ink-500);margin-bottom:16px;line-height:1.6">Enable browser notifications for local events and issue updates.</p>
                 <button onclick="showNotification()" class="btn-sm" style="background:var(--clay-500);color:white;border:none">Enable Alerts</button>
             </div>
- 
-            <!-- Drag & Drop -->
             <div class="card reveal" style="padding:28px;grid-column:span 2">
                 <div style="width:44px;height:44px;border-radius:12px;background:rgba(92,138,80,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:16px">
                     <svg width="20" height="20" fill="none" stroke="var(--moss-600)" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z"/></svg>
@@ -801,9 +859,9 @@
         </div>
     </div>
 </section>
- 
+
 </main>
- 
+
 <!-- ======== FOOTER ======== -->
 <footer style="background:var(--ink-900);padding:64px 0 32px">
     <div style="max-width:1280px;margin:0 auto;padding:0 24px">
@@ -814,22 +872,22 @@
                     <span style="font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:#FAF7F2">Community<span style="color:var(--clay-400)">Sphere</span></span>
                 </div>
                 <p style="color:rgba(250,247,242,0.4);font-size:0.85rem;line-height:1.7;max-width:260px">Empowering communities through technology, transparency, and shared responsibility.</p>
+                <p style="color:rgba(250,247,242,0.25);font-size:0.74rem;margin-top:14px;font-family:'JetBrains Mono',monospace">Tip: press <strong style="color:rgba(250,247,242,0.45)">R</strong> · <strong style="color:rgba(250,247,242,0.45)">M</strong> · <strong style="color:rgba(250,247,242,0.45)">D</strong> · <strong style="color:rgba(250,247,242,0.45)">V</strong> · <strong style="color:rgba(250,247,242,0.45)">P</strong> · <strong style="color:rgba(250,247,242,0.45)">T</strong> to jump around</p>
             </div>
             <div>
                 <p style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--clay-400);margin-bottom:16px">Platform</p>
                 <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px">
-                    <li><a href="#dashboard" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='rgba(250,247,242,0.5)'">Dashboard</a></li>
-                    <li><a href="#ai-reporter" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='rgba(250,247,242,0.5)'">Report Issues</a></li>
-                    <li><a href="#map" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='rgba(250,247,242,0.5)'">Community Map</a></li>
-                    <li><a href="#volunteer" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='rgba(250,247,242,0.5)'">Volunteer Hub</a></li>
+                    <li><a href="#dashboard" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none">Dashboard</a></li>
+                    <li><a href="#ai-reporter" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none">Report Issues</a></li>
+                    <li><a href="#map" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none">Community Map</a></li>
+                    <li><a href="#volunteer" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none">Volunteer Hub</a></li>
                 </ul>
             </div>
             <div>
                 <p style="font-family:'JetBrains Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--clay-400);margin-bottom:16px">Resources</p>
                 <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px">
-                    <li><a href="#marketplace" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='rgba(250,247,242,0.5)'">Marketplace</a></li>
-                    <li><a href="#toolkit" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='rgba(250,247,242,0.5)'">Toolkit</a></li>
-                    <li><a href="#" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none;transition:color 0.2s" onmouseover="this.style.color='#FAF7F2'" onmouseout="this.style.color='rgba(250,247,242,0.5)'">Documentation</a></li>
+                    <li><a href="#marketplace" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none">Marketplace</a></li>
+                    <li><a href="#toolkit" style="color:rgba(250,247,242,0.5);font-size:0.85rem;text-decoration:none">Toolkit</a></li>
                 </ul>
             </div>
             <div>
@@ -837,27 +895,16 @@
                 <ul style="list-style:none;padding:0;display:flex;flex-direction:column;gap:10px">
                     <li style="color:rgba(250,247,242,0.5);font-size:0.82rem">hello@communitysphere.io</li>
                     <li style="color:rgba(250,247,242,0.5);font-size:0.82rem">+1 (555) 123-4567</li>
-                    <li style="color:rgba(250,247,242,0.5);font-size:0.82rem">123 Community Lane</li>
                 </ul>
-                <div style="display:flex;gap:8px;margin-top:18px">
-                    <a href="#" style="width:32px;height:32px;background:rgba(255,255,255,0.06);border-radius:8px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;color:rgba(250,247,242,0.5)" onmouseover="this.style.background='var(--moss-500)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(250,247,242,0.5)'">
-                        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
-                    </a>
-                    <a href="#" style="width:32px;height:32px;background:rgba(255,255,255,0.06);border-radius:8px;display:flex;align-items:center;justify-content:center;transition:background 0.2s;color:rgba(250,247,242,0.5)" onmouseover="this.style.background='var(--moss-500)';this.style.color='white'" onmouseout="this.style.background='rgba(255,255,255,0.06)';this.style.color='rgba(250,247,242,0.5)'">
-                        <svg width="13" height="13" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.96-.27 1.983-.405 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                    </a>
-                </div>
             </div>
         </div>
         <div style="border-top:1px solid rgba(255,255,255,0.07);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
             <p style="color:rgba(250,247,242,0.25);font-size:0.78rem">© 2025 CommunitySphere. All rights reserved.</p>
-            <p style="color:rgba(250,247,242,0.2);font-size:0.72rem;font-family:'JetBrains Mono',monospace">Built with HTML5 · CSS3 · Vanilla JS · Claude AI</p>
+            <p style="color:rgba(250,247,242,0.2);font-size:0.72rem;font-family:'JetBrains Mono',monospace">Built with HTML5 · CSS3 · Vanilla JS</p>
         </div>
     </div>
-    
 </footer>
 
- 
 <script>
 /* ============================================================
    CANVAS — Login particles
@@ -883,7 +930,7 @@
     resize(); mkPts(); draw();
     window.addEventListener('resize',()=>{ resize(); mkPts(); });
 })();
- 
+
 /* ============================================================
    CANVAS — Hero network
 ============================================================ */
@@ -916,7 +963,7 @@
     header.addEventListener('mousemove',e=>{ const r=header.getBoundingClientRect(); mouse.x=e.clientX-r.left; mouse.y=e.clientY-r.top; });
     header.addEventListener('mouseleave',()=>{ mouse.x=-9999; mouse.y=-9999; });
 })();
- 
+
 /* ============================================================
    TYPEWRITER
 ============================================================ */
@@ -933,13 +980,13 @@
     }
     tick();
 })();
- 
+
 /* ============================================================
    SCROLL REVEAL
 ============================================================ */
 const revealObs=new IntersectionObserver(entries=>entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('visible'); revealObs.unobserve(e.target); } }),{threshold:0.1});
 document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
- 
+
 /* ============================================================
    TOAST
 ============================================================ */
@@ -951,7 +998,7 @@ function showToast(msg,type='success',icon='✓'){
     root.appendChild(t);
     setTimeout(()=>{ t.classList.add('out'); setTimeout(()=>t.remove(),350); },3200);
 }
- 
+
 /* ============================================================
    MOBILE NAV
 ============================================================ */
@@ -967,7 +1014,7 @@ function closeMobileMenu(){
     document.getElementById('mobile-menu-btn').classList.remove('open');
     document.getElementById('mobile-menu-btn').setAttribute('aria-expanded','false');
 }
- 
+
 /* ============================================================
    LOGIN
 ============================================================ */
@@ -1030,15 +1077,17 @@ function doLogout(){
     document.getElementById('nav-dropdown').classList.remove('open');
     document.getElementById('login-overlay').classList.remove('hidden-overlay');
 }
-function toggleDD(){
-    document.getElementById('nav-dropdown').classList.toggle('open');
-}
+function toggleDD(){ document.getElementById('nav-dropdown').classList.toggle('open'); document.getElementById('shortcuts-pop').classList.remove('open'); }
+function toggleShortcuts(){ document.getElementById('shortcuts-pop').classList.toggle('open'); document.getElementById('nav-dropdown').classList.remove('open'); }
 document.addEventListener('click',e=>{
     const dd=document.getElementById('nav-dropdown');
     const av=document.getElementById('nav-av');
     if(dd&&!dd.contains(e.target)&&!av.contains(e.target)) dd.classList.remove('open');
+    const sp=document.getElementById('shortcuts-pop');
+    const sb=document.getElementById('shortcuts-btn');
+    if(sp&&!sp.contains(e.target)&&!sb.contains(e.target)) sp.classList.remove('open');
 });
- 
+
 /* ============================================================
    DARK MODE
 ============================================================ */
@@ -1049,7 +1098,7 @@ function toggleDark(){
     document.getElementById('dark-btn').textContent=dark?'☀️':'🌙';
     showToast(dark?'Dark mode on':'Light mode restored','info',dark?'🌙':'☀️');
 }
- 
+
 /* ============================================================
    INIT
 ============================================================ */
@@ -1061,29 +1110,34 @@ function initAll(){
     renderMarket();
     renderMap();
 }
- 
+
 /* ============================================================
-   HEALTH STATS
+   HEALTH STATS  (mouseover/mouseout tooltip on each metric)
 ============================================================ */
 const STATS=[
-    {label:'Safety',val:88,color:'#5C8A50'},{label:'Cleanliness',val:74,color:'#A07040'},
-    {label:'Engagement',val:91,color:'#5C8A50'},{label:'Sustainability',val:67,color:'#B8915E'}
+    {label:'Safety',val:88,color:'#5C8A50',tip:'Based on reported incidents, lighting coverage, and resolved safety issues over the last 30 days.'},
+    {label:'Cleanliness',val:74,color:'#A07040',tip:'Tracks litter reports, waste collection timeliness, and public space upkeep.'},
+    {label:'Engagement',val:91,color:'#5C8A50',tip:'Measures volunteer sign-ups, poll participation, and active reporters this month.'},
+    {label:'Sustainability',val:67,color:'#B8915E',tip:'Reflects recycling rates, green space maintenance, and resource-sharing activity.'}
 ];
 function renderStats(){
     const c=document.getElementById('health-stats'); if(!c) return;
     c.innerHTML='';
     STATS.forEach(s=>{
-        const d=document.createElement('div'); d.style.marginBottom='14px';
-        d.innerHTML=`<div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:0.82rem;font-weight:500;color:var(--ink-800)">${s.label}</span><span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:${s.color};font-weight:500">${s.val}/100</span></div><div class="stat-bar-bg"><div class="stat-bar-fill" style="background:${s.color};width:0"></div></div>`;
+        const d=document.createElement('div'); d.className='stat-row'; d.style.marginBottom='14px';
+        d.innerHTML=`<div class="stat-tip">${s.tip}</div><div style="display:flex;justify-content:space-between;margin-bottom:6px"><span style="font-size:0.82rem;font-weight:500;color:var(--ink-800)">${s.label}</span><span style="font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:${s.color};font-weight:500">${s.val}/100</span></div><div class="stat-bar-bg"><div class="stat-bar-fill" style="background:${s.color};width:0"></div></div>`;
+        d.addEventListener('mouseover',()=>logSilently('mouseover','stat:'+s.label));
+        d.addEventListener('mouseout',()=>logSilently('mouseout','stat:'+s.label));
         c.appendChild(d);
     });
     setTimeout(()=>{ document.querySelectorAll('.stat-bar-fill').forEach((b,i)=>b.style.width=STATS[i].val+'%'); },120);
 }
+function logSilently(){ /* hook point for analytics; intentionally a no-op in this demo build */ }
 function refreshStats(){
     STATS.forEach(s=>{ s.val=Math.min(100,Math.max(35,s.val+Math.floor((Math.random()-.3)*10))); });
     renderStats(); showToast('Stats refreshed','success','📊');
 }
- 
+
 /* ============================================================
    ACTIVITY FEED
 ============================================================ */
@@ -1104,18 +1158,13 @@ function addFeedItem(){
     document.getElementById('feed-count').textContent=feedCount+' UPDATE'+(feedCount>1?'S':'');
 }
 function renderFeed(){ for(let i=0;i<3;i++) setTimeout(()=>addFeedItem(),i*250); }
- 
+
 /* ============================================================
    POLL
 ============================================================ */
-function initPoll(){
-    setTimeout(()=>document.querySelectorAll('.poll-bar-fill').forEach(b=>b.style.width=b.dataset.val+'%'),600);
-}
-function vote(el,choice){
-    if(document.querySelector('.poll-opt.voted')) return;
-    el.classList.add('voted'); showToast('Vote cast for "'+choice+'"','success','🗳️');
-}
- 
+function initPoll(){ setTimeout(()=>document.querySelectorAll('.poll-bar-fill').forEach(b=>b.style.width=b.dataset.val+'%'),600); }
+function vote(el,choice){ if(document.querySelector('.poll-opt.voted')) return; el.classList.add('voted'); showToast('Vote cast for "'+choice+'"','success','🗳️'); }
+
 /* ============================================================
    VOLUNTEERS
 ============================================================ */
@@ -1140,27 +1189,27 @@ function renderVolunteers(){
     });
 }
 function joinVol(btn,title){ btn.textContent='Joined ✓'; btn.style.background='var(--moss-500)'; btn.style.color='white'; btn.disabled=true; showToast('Signed up for "'+title+'"','success','🌿'); }
- 
+
 /* ============================================================
    ISSUE REPORTER
 ============================================================ */
 function selTag(el){ document.querySelectorAll('#issue-tags .itag').forEach(t=>t.classList.remove('active')); el.classList.add('active'); }
 function selPri(el){ document.querySelectorAll('.pbtn').forEach(b=>b.classList.remove('active')); el.classList.add('active'); }
- 
+
 document.getElementById('issue-desc').addEventListener('input',function(){
     const n=this.value.length;
     document.getElementById('char-count').textContent=n+' / 300';
     document.getElementById('char-count').style.color=n>280?'#DC2626':'var(--ink-300)';
     if(n>300) this.value=this.value.slice(0,300);
 });
- 
+
 function previewIssueImg(inp){
     const file=inp.files[0]; if(!file) return;
     const reader=new FileReader();
     reader.onload=e=>{ const img=document.getElementById('issue-img-preview'); img.src=e.target.result; img.style.display='block'; showToast('Photo attached','success','📸'); };
     reader.readAsDataURL(file);
 }
- 
+
 function pinLocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(pos=>{
@@ -1169,102 +1218,32 @@ function pinLocation(){
         },()=>showToast('Location access denied','error','⚠️'));
     } else showToast('Geolocation not supported','error','⚠️');
 }
- 
+
 function submitIssue(){
     const descField=document.getElementById('issue-desc');
-
-    if(!descField.checkValidity()){
-        descField.reportValidity();
-
-        showToast(
-        'Please describe the issue (min. 10 characters)',
-        'error',
-        '⚠️'
-        );
-
-        return;
-    }
-
+    if(!descField.checkValidity()){ descField.reportValidity(); showToast('Please describe the issue (min. 10 characters)','error','⚠️'); return; }
     const desc=descField.value.trim();
-
-    const tag=document.querySelector(
-    '#issue-tags .itag.active'
-    );
-
-    const pri=document.querySelector(
-    '.pbtn.active'
-    );
-
-    const id='#'+Math.floor(
-    Math.random()*900+100
-    );
-
+    const tag=document.querySelector('#issue-tags .itag.active');
+    const pri=document.querySelector('.pbtn.active');
+    const id='#'+Math.floor(Math.random()*900+100);
     const badge=document.createElement('span');
-
-    badge.style.cssText=
-    'display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:100px;font-size:0.73rem;font-weight:600;background:rgba(92,138,80,0.1);color:var(--moss-600);border:1.5px solid rgba(92,138,80,0.25);font-family:Inter,sans-serif';
-
-    badge.innerHTML=id+' · '+
-    (tag?tag.textContent.trim():'Issue')
-    +' · '+pri.textContent;
-
-    document.getElementById(
-    'submitted-issues'
-    ).appendChild(badge);
-
+    badge.style.cssText='display:inline-flex;align-items:center;gap:5px;padding:5px 12px;border-radius:100px;font-size:0.73rem;font-weight:600;background:rgba(92,138,80,0.1);color:var(--moss-600);border:1.5px solid rgba(92,138,80,0.25);font-family:Inter,sans-serif';
+    badge.innerHTML=id+' · '+(tag?tag.textContent.trim():'Issue')+' · '+pri.textContent;
+    document.getElementById('submitted-issues').appendChild(badge);
     descField.value='';
-
-    document.getElementById(
-    'char-count'
-    ).textContent='0 / 300';
-
-    showToast(
-    'Issue reported! Tracking ID '
-    +id+' assigned.',
-    'success',
-    '📋'
-    );
-
-    addIssueToMap(
-    tag?tag.textContent:'Issue',
-    pri.textContent,
-    id
-    );
+    document.getElementById('char-count').textContent='0 / 300';
+    showToast('Issue reported! Tracking ID '+id+' assigned.','success','📋');
+    addIssueToMap(tag?tag.textContent:'Issue',pri.textContent,id);
 }
 
-
-/* EVENTS */
-
 window.addEventListener("load",()=>{
-
-    const issueBox=
-    document.getElementById("issue-desc");
-
-    issueBox.addEventListener(
-    "focus",()=>{
-
-        issueBox.style.borderColor=
-        "#5C8A50";
-
-        issueBox.style.boxShadow=
-        "0 0 10px rgba(92,138,80,.3)";
-    });
-
-    issueBox.addEventListener(
-    "blur",()=>{
-
-        issueBox.style.borderColor="";
-        issueBox.style.boxShadow="";
-    });
-
+    const issueBox=document.getElementById("issue-desc");
+    issueBox.addEventListener("focus",()=>{ issueBox.style.borderColor="#5C8A50"; issueBox.style.boxShadow="0 0 10px rgba(92,138,80,.3)"; });
+    issueBox.addEventListener("blur",()=>{ issueBox.style.borderColor=""; issueBox.style.boxShadow=""; });
 });
+
 /* ============================================================
    SMART ISSUE ASSISTANT
-   ------------------------------------------------------------
-   100% local, rule-based classifier. No external API, no key,
-   no network call — works offline and on any static host
-   (e.g. GitHub Pages). Demonstrates string processing, keyword
-   scoring, and DOM templating in plain JavaScript.
 ============================================================ */
 const ISSUE_CATEGORIES = {
     'Infrastructure': ['pothole','road','sidewalk','footpath','pavement','bridge','manhole','crack','sign','fence','barrier','construction','curb','wall'],
@@ -1276,7 +1255,7 @@ const ISSUE_CATEGORIES = {
 };
 const URGENT_WORDS = ['danger','dangerous','urgent','emergency','fire','accident','injur','exposed wire','live wire','shock','child','children','school','hospital','bite','attack','collapse','flood','gas leak','blocking','blocked','immediate','risk'];
 const LOW_WORDS = ['minor','small','cosmetic','occasionally','sometimes','eventually','faded','slight','little'];
- 
+
 function classifyIssue(text){
     const lower=text.toLowerCase();
     let bestCat='Infrastructure', bestScore=-1;
@@ -1292,7 +1271,7 @@ function classifyIssue(text){
     const report=`This report concerns a ${bestCat.toLowerCase()} issue. Resident's description: "${text.trim()}". Based on the wording used, this has been classified as ${priority} priority. Recommended next step: forward to the relevant municipal department for inspection within the standard response window for ${priority.toLowerCase()}-priority cases.`;
     return {category:bestCat, priority, report};
 }
- 
+
 function sendAI(){
     const input=document.getElementById('ai-input');
     const msg=input.value.trim(); if(!msg) return;
@@ -1307,65 +1286,34 @@ function sendAI(){
         autofillFromAI(category,priority,msg);
     }, 600+Math.random()*500);
 }
-document.getElementById("ai-input")
-.addEventListener("keypress", function(e){
+document.getElementById("ai-input").addEventListener("keypress",function(e){ if(e.key==="Enter"){ e.preventDefault(); sendAI(); } });
 
-    if(e.key==="Enter"){
-        e.preventDefault();
-        sendAI();
-    }
-
-});
- 
 function appendChat(text,role){
     const chat=document.getElementById('ai-chat');
-    const d=document.createElement('div');
-    d.className=`ai-bubble ${role}`;
-    d.textContent=text;
-    chat.appendChild(d);
-    chat.scrollTop=chat.scrollHeight;
-    return d;
+    const d=document.createElement('div'); d.className=`ai-bubble ${role}`; d.textContent=text;
+    chat.appendChild(d); chat.scrollTop=chat.scrollHeight; return d;
 }
- 
 function appendLoading(){
     const chat=document.getElementById('ai-chat');
-    const d=document.createElement('div');
-    d.className='ai-loading';
-    d.innerHTML='<span></span><span></span><span></span>';
-    chat.appendChild(d);
-    chat.scrollTop=chat.scrollHeight;
-    return d;
+    const d=document.createElement('div'); d.className='ai-loading'; d.innerHTML='<span></span><span></span><span></span>';
+    chat.appendChild(d); chat.scrollTop=chat.scrollHeight; return d;
 }
- 
 function autofillFromAI(category,priority,userMsg){
-    document.querySelectorAll('#issue-tags .itag').forEach(t=>{
-        t.classList.toggle('active', t.textContent.toLowerCase().includes(category.toLowerCase()));
-    });
-    document.querySelectorAll('.pbtn').forEach(b=>{
-        b.classList.toggle('active', b.textContent.trim().toLowerCase()===priority.toLowerCase());
-    });
+    document.querySelectorAll('#issue-tags .itag').forEach(t=>{ t.classList.toggle('active', t.textContent.toLowerCase().includes(category.toLowerCase())); });
+    document.querySelectorAll('.pbtn').forEach(b=>{ b.classList.toggle('active', b.textContent.trim().toLowerCase()===priority.toLowerCase()); });
     const descField=document.getElementById('issue-desc');
-    if(!descField.value.trim()){
-        descField.value=userMsg;
-        document.getElementById('char-count').textContent=userMsg.length+' / 300';
-    }
+    if(!descField.value.trim()){ descField.value=userMsg; document.getElementById('char-count').textContent=userMsg.length+' / 300'; }
 }
- 
 function askAI(){
     const desc=document.getElementById('issue-desc').value.trim();
     if(!desc){ showToast('Enter a description first','error','⚠️'); return; }
-    document.getElementById('ai-input').value=desc;
-    sendAI();
+    document.getElementById('ai-input').value=desc; sendAI();
     document.getElementById('ai-reporter').scrollIntoView({behavior:'smooth'});
 }
- 
-function quickPrompt(text){
-    document.getElementById('ai-input').value=text;
-    sendAI();
-}
- 
+function quickPrompt(text){ document.getElementById('ai-input').value=text; sendAI(); }
+
 /* ============================================================
-   COMMUNITY MAP
+   COMMUNITY MAP  (dblclick = quick report, contextmenu = map actions)
 ============================================================ */
 const MAP_ISSUES=[
     {x:'18%',y:'25%',color:'green',label:'Pothole — Resolved',id:'#102',sector:'Sector 1'},
@@ -1377,7 +1325,7 @@ const MAP_ISSUES=[
     {x:'25%',y:'68%',color:'green',label:'Graffiti — Resolved',id:'#099',sector:'Sector 1'},
 ];
 let mapIssues=[...MAP_ISSUES];
- 
+let lastMapClickPct=null;
 function renderMap(){
     const cont=document.getElementById('map-dots');
     const tooltip=document.getElementById('map-tooltip');
@@ -1387,29 +1335,26 @@ function renderMap(){
         const dot=document.createElement('div');
         dot.className=`mdot ${issue.color}`;
         dot.style.cssText=`left:${issue.x};top:${issue.y};width:12px;height:12px;transform:translate(-50%,-50%)`;
-        dot.addEventListener('mouseenter',e=>{
-            tooltip.style.display='block';
-            tooltip.textContent=`${issue.id} — ${issue.label}`;
-            tooltip.style.left=(parseFloat(issue.x)+2)+'%';
-            tooltip.style.top=(parseFloat(issue.y)-8)+'%';
-        });
-        dot.addEventListener('mouseleave',()=>{ tooltip.style.display='none'; });
+        dot.addEventListener('mouseover',e=>{ tooltip.style.display='block'; tooltip.textContent=`${issue.id} — ${issue.label}`; tooltip.style.left=(parseFloat(issue.x)+2)+'%'; tooltip.style.top=(parseFloat(issue.y)-8)+'%'; });
+        dot.addEventListener('mouseout',()=>{ tooltip.style.display='none'; });
         cont.appendChild(dot);
     });
     renderIssueList();
 }
- 
-function addIssueToMap(tag,priority,id){
-    const x=Math.floor(Math.random()*80+10)+'%';
-    const y=Math.floor(Math.random()*70+10)+'%';
+function sectorFromPct(px,py){
+    const col = px<50 ? (py<50?'Sector 1':'Sector 1') : (py<50?'Sector 3':'Sector 4');
+    const row = px<50 && py>=50 ? 'Sector 2' : col;
+    return row;
+}
+function addIssueToMap(tag,priority,id,xPct,yPct){
+    const x=(xPct!==undefined?xPct:Math.floor(Math.random()*80+10))+'%';
+    const y=(yPct!==undefined?yPct:Math.floor(Math.random()*70+10))+'%';
     const color=priority==='High'?'red':priority==='Medium'?'amber':'green';
-    mapIssues.push({x,y,color,label:tag+' — Reported',id,sector:'Your Location'});
+    mapIssues.push({x,y,color,label:tag+' — Reported',id,sector:sectorFromPct(parseFloat(x),parseFloat(y))});
     renderMap();
 }
- 
 function renderIssueList(){
-    const list=document.getElementById('issue-list'); if(!list) return;
-    list.innerHTML='';
+    const list=document.getElementById('issue-list'); if(!list) return; list.innerHTML='';
     mapIssues.slice(-6).reverse().forEach(issue=>{
         const col=issue.color==='green'?'#5C8A50':issue.color==='amber'?'#A07040':'#DC2626';
         const status=issue.color==='green'?'Resolved':issue.color==='amber'?'In Progress':'Urgent';
@@ -1419,7 +1364,30 @@ function renderIssueList(){
         list.appendChild(d);
     });
 }
- 
+
+/* dblclick on the map → ripple + pre-filled quick report at that spot */
+function onMapDblClick(e){
+    const mapEl=document.getElementById('community-map');
+    const rect=mapEl.getBoundingClientRect();
+    const xPct=Math.round(((e.clientX-rect.left)/rect.width)*100);
+    const yPct=Math.round(((e.clientY-rect.top)/rect.height)*100);
+    const sector=sectorFromPct(xPct,yPct);
+
+    const ripple=document.createElement('div');
+    ripple.className='ripple-effect';
+    const size=110;
+    ripple.style.cssText=`width:${size}px;height:${size}px;left:${e.clientX-size/2}px;top:${e.clientY-size/2}px`;
+    document.body.appendChild(ripple);
+    setTimeout(()=>ripple.remove(),700);
+
+    document.getElementById('issue-loc').value=sector+' (pinned from map)';
+    document.getElementById('issue-desc').value='Quick report from map — please add details about the issue at this spot.';
+    document.getElementById('char-count').textContent=document.getElementById('issue-desc').value.length+' / 300';
+    lastMapClickPct={x:xPct,y:yPct};
+    document.getElementById('ai-reporter').scrollIntoView({behavior:'smooth'});
+    showToast('Quick-report started for '+sector+' — fill in the details','info','🖱️');
+}
+
 /* ============================================================
    RESOURCE MARKETPLACE
 ============================================================ */
@@ -1432,45 +1400,30 @@ const MARKET_DATA=[
     {name:'Ladder (6ft)',cat:'Tools',cond:'Good',owner:'David W.',emoji:'🪜',id:6,available:true},
 ];
 let market=[...MARKET_DATA];
- 
 function renderMarket(filter='',cat=''){
     const g=document.getElementById('market-grid'); if(!g) return;
-    const items=market.filter(m=>{
-        const matchText=m.name.toLowerCase().includes(filter.toLowerCase());
-        const matchCat=!cat||m.cat===cat;
-        return matchText&&matchCat;
-    });
+    const items=market.filter(m=>{ const matchText=m.name.toLowerCase().includes(filter.toLowerCase()); const matchCat=!cat||m.cat===cat; return matchText&&matchCat; });
     g.innerHTML='';
-    if(items.length===0){ g.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--ink-300);font-size:0.9rem">No items found. Try a different search.</div>'; return; }
+    if(items.length===0){ g.innerHTML='<div style="grid-column:1/-1;text-align:center;padding:48px;color:var(--ink-300);font-size:0.9rem">No items found.</div>'; return; }
     items.forEach(item=>{
         const d=document.createElement('div'); d.className='res-card';
         d.innerHTML=`<div style="font-size:2rem;margin-bottom:12px">${item.emoji}</div><h4 style="font-weight:600;font-size:0.92rem;color:var(--ink-900);margin-bottom:4px">${item.name}</h4><div style="display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap"><span class="res-badge" style="background:var(--clay-100);color:var(--clay-600)">${item.cat}</span><span class="res-badge" style="background:${item.available?'rgba(92,138,80,0.1)':'rgba(220,38,38,0.1)'};color:${item.available?'#5C8A50':'#DC2626'}">${item.available?'Available':'Checked Out'}</span></div><p style="font-size:0.78rem;color:var(--ink-400);margin-bottom:12px">Condition: ${item.cond} · Listed by ${item.owner}</p><button onclick="borrowItem(${item.id},this)" ${!item.available?'disabled':''} style="width:100%;padding:9px;border:1.5px solid ${item.available?'var(--moss-500)':'var(--clay-200)'};border-radius:100px;font-size:0.78rem;font-weight:600;cursor:${item.available?'pointer':'not-allowed'};color:${item.available?'var(--moss-600)':'var(--ink-300)'};background:${item.available?'rgba(92,138,80,0.06)':'transparent'};font-family:'Inter',sans-serif;transition:all 0.2s" ${item.available?`onmouseover="this.style.background='var(--moss-500)';this.style.color='white'" onmouseout="this.style.background='rgba(92,138,80,0.06)';this.style.color='var(--moss-600)'"`:''} >${item.available?'Request to Borrow':'Unavailable'}</button>`;
         g.appendChild(d);
     });
 }
-function filterMarket(val){
-    const search=val!==undefined?val:document.getElementById('market-search').value;
-    const cat=document.getElementById('market-cat').value;
-    renderMarket(search,cat);
-}
-function borrowItem(id,btn){
-    const item=market.find(m=>m.id===id);
-    if(item){ item.available=false; showToast('"'+item.name+'" request sent!','success','📦'); renderMarket(); }
-}
+function filterMarket(val){ const search=val!==undefined?val:document.getElementById('market-search').value; const cat=document.getElementById('market-cat').value; renderMarket(search,cat); }
+function borrowItem(id,btn){ const item=market.find(m=>m.id===id); if(item){ item.available=false; showToast('"'+item.name+'" request sent!','success','📦'); renderMarket(); } }
 function openAddResource(){ document.getElementById('add-resource-modal').style.display='flex'; }
 function closeAddResource(){ document.getElementById('add-resource-modal').style.display='none'; }
 function addResource(){
-    const name=document.getElementById('res-name').value.trim();
-    if(!name){ showToast('Please enter an item name','error','⚠️'); return; }
+    const name=document.getElementById('res-name').value.trim(); if(!name){ showToast('Please enter an item name','error','⚠️'); return; }
     const emojis={'Tools':'🔧','Books':'📚','Sports':'⚽','Kitchen':'🍳','Garden':'🌱'};
     const cat=document.getElementById('res-cat').value;
     market.unshift({name,cat,cond:document.getElementById('res-cond').value,owner:'You',emoji:emojis[cat]||'📦',id:Date.now(),available:true});
-    renderMarket();
-    closeAddResource();
-    showToast('"'+name+'" listed on the marketplace!','success','✅');
+    renderMarket(); closeAddResource(); showToast('"'+name+'" listed on the marketplace!','success','✅');
 }
 document.getElementById('add-resource-modal').addEventListener('click',e=>{ if(e.target===document.getElementById('add-resource-modal')) closeAddResource(); });
- 
+
 /* ============================================================
    ANIMATED NUMBERS
 ============================================================ */
@@ -1479,15 +1432,14 @@ function animateNum(el,target,suffix){
     num._animating=true;
     let start=null,dur=1000;
     requestAnimationFrame(function step(t){ if(!start) start=t;
-        const p=Math.min((t-start)/dur,1);
-        const val=Math.round(p*target);
+        const p=Math.min((t-start)/dur,1); const val=Math.round(p*target);
         num.textContent=(val>=1000?Math.round(val/1000)+'K':val)+suffix;
         if(p<1) requestAnimationFrame(step); else num._animating=false;
     });
 }
- 
+
 /* ============================================================
-   TOOLKIT — Original APIs
+   TOOLKIT APIs
 ============================================================ */
 function getLocation(){
     if(navigator.geolocation){
@@ -1504,6 +1456,16 @@ function saveUser(){
     document.getElementById('savedUser').textContent='Welcome, '+n+'!';
     showToast('Profile saved!','success','👤');
 }
+/* blur on the profile name field — auto-saves the moment focus leaves it */
+document.getElementById('username').addEventListener('blur',function(){
+    const n=this.value.trim();
+    const saved=localStorage.getItem('communityUser');
+    if(n && n!==saved){
+        localStorage.setItem('communityUser',n);
+        document.getElementById('savedUser').textContent='Welcome, '+n+'! (auto-saved)';
+        showToast('Profile auto-saved','success','👤');
+    }
+});
 function previewPhoto(inp){
     const file=inp.files[0]; if(!file) return;
     const reader=new FileReader();
@@ -1515,8 +1477,6 @@ function showNotification(){
     if(Notification.permission==='granted'){ new Notification('CommunitySphere',{body:'New event near you!'}); showToast('Test notification sent','success','🔔'); }
     else if(Notification.permission!=='denied'){ Notification.requestPermission().then(p=>{ if(p==='granted'){ new Notification('CommunitySphere',{body:'Notifications enabled!'}); showToast('Notifications enabled','success','🔔'); } }); }
 }
- 
-// Drag & Drop
 const draggable=document.getElementById('drag-resource');
 const dropZone=document.getElementById('dropZone');
 if(draggable&&dropZone){
@@ -1525,22 +1485,136 @@ if(draggable&&dropZone){
     dropZone.addEventListener('dragleave',()=>{ dropZone.style.borderColor='var(--clay-200)'; dropZone.style.background=''; });
     dropZone.addEventListener('drop',e=>{ e.preventDefault(); const data=e.dataTransfer.getData('text'); dropZone.style.borderColor='var(--moss-500)'; dropZone.style.background='rgba(92,138,80,0.05)'; dropZone.innerHTML=`<strong style="color:var(--moss-600)">✅ ${data}</strong><br><span style="font-size:0.78rem;color:var(--ink-400)">Shared with your community</span>`; showToast('Resource shared with neighbours!','success','📦'); });
 }
- 
-/* ============================================================
-   INIT ON LOAD
-============================================================ */
+
+/* ════════════════════════════════════════════════════════════
+   SITE-WIDE EVENT BEHAVIOR
+   (scroll, keydown, resize, contextmenu, blur, mouseover/mouseout
+    are woven into existing features above and below — no
+    standalone demo panel.)
+════════════════════════════════════════════════════════════ */
+
+/* ── scroll: top progress bar, nav elevation, back-to-top ── */
+(function initScroll(){
+    const bar   = document.getElementById('scroll-progress-bar');
+    const navEl = document.getElementById('main-nav');
+    const toTop = document.getElementById('back-to-top');
+
+    window.addEventListener('scroll', () => {
+        const scrolled  = window.scrollY;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const pct       = maxScroll > 0 ? (scrolled / maxScroll) * 100 : 0;
+        if(bar) bar.style.width = pct + '%';
+        if(navEl) navEl.classList.toggle('nav-scrolled', scrolled > 12);
+        if(toTop) toTop.classList.toggle('show', scrolled > 480);
+    });
+})();
+
+/* ── keydown: site-wide navigation shortcuts + Escape to close menus ── */
+(function initKeyboardShortcuts(){
+    const SHORTCUTS = { r:'#ai-reporter', m:'#map', d:'#dashboard', v:'#volunteer', p:'#marketplace', t:'#toolkit' };
+
+    document.addEventListener('keydown', (e) => {
+        if(['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) return;
+
+        if(e.key === 'Escape'){
+            closeCtx();
+            document.getElementById('nav-dropdown').classList.remove('open');
+            document.getElementById('shortcuts-pop').classList.remove('open');
+            closeAddResource();
+            return;
+        }
+        const lower = e.key.toLowerCase();
+        if(SHORTCUTS[lower]){
+            const target = document.querySelector(SHORTCUTS[lower]);
+            if(target){
+                target.scrollIntoView({behavior:'smooth'});
+                showToast('Jumped to '+target.querySelector('h2,h1')?.textContent?.trim() || lower.toUpperCase(),'info','⌨️');
+            }
+        }
+    });
+})();
+
+/* ── resize: keep mobile nav state sane across breakpoints ── */
+window.addEventListener('resize', () => {
+    if(window.innerWidth > 768) closeMobileMenu();
+});
+
+/* ── contextmenu: context-aware custom right-click menu ── */
+(function initContextMenu(){
+    const menu = document.getElementById('custom-context-menu');
+
+    document.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        const onMap = e.target.closest('#community-map');
+        const rect = onMap ? onMap.getBoundingClientRect() : null;
+        let xPct, yPct, sector;
+        if(onMap){
+            xPct = Math.round(((e.clientX-rect.left)/rect.width)*100);
+            yPct = Math.round(((e.clientY-rect.top)/rect.height)*100);
+            sector = sectorFromPct(xPct,yPct);
+        }
+
+        menu.innerHTML = onMap ? `
+            <div class="cmenu-label">${sector}</div>
+            <div class="cmenu-item" onclick="ctxReportAt(${xPct},${yPct})">📋 Report an issue here</div>
+            <div class="cmenu-item" onclick="ctxVolunteerNear('${sector}')">🌿 Find volunteers nearby</div>
+            <div class="cmenu-item" onclick="ctxShare()">🔗 Share this map view</div>
+            <div class="cmenu-sep"></div>
+            <div class="cmenu-item" onclick="closeCtx()" style="color:var(--ink-300);font-size:0.75rem">✕ Close</div>
+        ` : `
+            <div class="cmenu-item" onclick="ctxReportAt()">📋 Report an issue</div>
+            <div class="cmenu-item" onclick="ctxShare()">🔗 Share this page</div>
+            <div class="cmenu-item" onclick="toggleDark();closeCtx()">🌙 Toggle dark mode</div>
+            <div class="cmenu-sep"></div>
+            <div class="cmenu-item" onclick="closeCtx()" style="color:var(--ink-300);font-size:0.75rem">✕ Close</div>
+        `;
+
+        const menuW = 220, menuH = onMap ? 175 : 150;
+        menu.style.left = (e.clientX + menuW > window.innerWidth  ? e.clientX - menuW : e.clientX) + 'px';
+        menu.style.top  = (e.clientY + menuH > window.innerHeight ? e.clientY - menuH : e.clientY) + 'px';
+        menu.style.display = 'block';
+    });
+
+    document.addEventListener('click', () => closeCtx());
+})();
+function closeCtx(){ document.getElementById('custom-context-menu').style.display='none'; }
+function ctxReportAt(xPct,yPct){
+    closeCtx();
+    if(xPct!==undefined){
+        document.getElementById('issue-loc').value=sectorFromPct(xPct,yPct)+' (pinned from map)';
+    }
+    document.getElementById('ai-reporter').scrollIntoView({behavior:'smooth'});
+    showToast('Opening issue reporter…','info','📋');
+}
+function ctxShare(){ closeCtx(); navigator.clipboard&&navigator.clipboard.writeText(window.location.href).then(()=>showToast('Link copied to clipboard!','success','🔗')); }
+function ctxVolunteerNear(sector){ closeCtx(); document.getElementById('volunteer').scrollIntoView({behavior:'smooth'}); showToast('Finding volunteers near '+sector+'…','info','🌿'); }
+
+/* ── blur: validate the "Neighborhood / Sector" field during sign-up ── */
+(function initNeighborhoodBlur(){
+    const field = document.getElementById('r-nb');
+    const feedback = document.getElementById('r-nb-feedback');
+    if(!field) return;
+    field.addEventListener('blur', () => {
+        const val = field.value.trim();
+        if(!val){ feedback.textContent=''; field.style.borderColor=''; return; }
+        if(val.length < 3){
+            feedback.textContent = '⚠ Please enter at least 3 characters.';
+            feedback.style.color = '#FCA5A5';
+            field.style.borderColor = '#DC2626';
+        } else {
+            feedback.textContent = `✓ "${val}" looks good.`;
+            feedback.style.color = '#86efac';
+            field.style.borderColor = 'var(--moss-400)';
+        }
+    });
+    field.addEventListener('focus', () => { field.style.borderColor='var(--moss-400)'; });
+})();
+
+/* ── load ── */
 window.addEventListener('load',()=>{
     const saved=localStorage.getItem('communityUser');
     if(saved) enterApp(saved);
-});
-window.addEventListener("load",()=>{
-
-    showToast(
-        "Welcome to CommunitySphere!",
-        "success",
-        "🏘️"
-    );
-
+    showToast('Welcome to CommunitySphere! 🏘️ Right-click anywhere for quick actions.','success','🏘️');
 });
 </script>
 </body>
